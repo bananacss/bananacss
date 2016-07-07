@@ -1,0 +1,33 @@
+{
+  "name": "bananacss",
+  "description": "A brazilian css preprocessor",
+  "version": "0.1.0",
+  "author": {
+    "name": "afonsopacifer",
+    "email": "afonsopacifer@live.com"
+  },
+  "bugs": {
+    "url": "https://github.com/afonsopacifer/bananacss/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/afonsopacifer/bananacss"
+  },
+  "keywords": [
+  ],
+  "preferGlobal": true,
+  "main": "src/index.js",
+  "bin": {
+    "bananacss": "bin/index.js"
+  },
+  "dependencies": {
+    "commander": "^2.9.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "jshint": "^2.8.0",
+    "mocha": "^2.2.3"
+  }
+}
