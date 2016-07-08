@@ -1,37 +1,11 @@
 # bananacss
 
-> A brazilian css preprocessor
-
-install your CLI locally:
-
-```sh
-$ [sudo] npm link
-```
-
-Run:
-
-```sh
-$ bananacss
-```
-
-```sh
-$ bananacss -x
-```
-
-```sh
-$ bananacss -y
-```
+> A brazilian css superset
 
 Run unit tests with mocha:
 
 ```sh
 $ npm test
-```
-
-Publish:
-
-```sh
-$ npm punlish
 ```
 
 ## Versioning

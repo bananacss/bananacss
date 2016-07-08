@@ -1,17 +1,13 @@
-var assert  = require('assert'),
-    example = require('../src/index.js');
+var assert = require('assert'),
+    banana = require('../src/banana.js');
 
-describe('example', function(){
+describe('banana', function(){
 
-  it('should return a text for first Task', function(){
-    var result = example.exampleTask1(),
-        expect = "Taks 1 done";
-    assert.equal(result, expect);
-  });
+  it("should transform the 'bnn-size' to width and height propertyes", function(){
 
-  it('should return a text for seconds Task', function(){
-    var result = example.exampleTask2(),
-        expect = "Taks 2 done";
+    var result = banana.render(),
+        expect = "";
+
     assert.equal(result, expect);
   });
 
