@@ -7,17 +7,17 @@
     "email": "afonsopacifer@live.com"
   },
   "bugs": {
-    "url": "https://github.com/afonsopacifer/bananacss/issues"
+    "url": "https://github.com/bananacss/bananacss/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/afonsopacifer/bananacss"
+    "url": "https://github.com/bananacss/bananacss"
   },
   "keywords": [],
   "preferGlobal": true,
   "main": "src/banana.js",
   "bin": {
-    "bananacss": "bin/index.js"
+    "banana": "bin/index.js"
   },
   "dependencies": {
     "commander": "^2.9.0",
@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "jshint": "^2.8.0",
-    "mocha": "^2.2.3"
+    "mocha": "^2.2.3",
+    "should": "^9.0.2"
   }
 }

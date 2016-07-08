@@ -44,22 +44,28 @@ $ npm install bananacss
 
 ## Command Line Usage
 
-*Compile* you .bnn file to .css
+*Compile you .bnn file to .css*
 
 ```sh
-$ bananacss <path>
+$ banana <input_path>
+```
+
+*Output to dir when passing files.*
+
+```sh
+$ banana <input_path> -o <out_path>
 ```
 
 *Show the project version.*
 
 ```sh
-$ bananacss --version
+$ banana --version
 ```
 
 *Show all available commands.*
 
 ```sh
-$ bananacss --help
+$ banana --help
 ```
 
 <hr>
@@ -130,14 +136,14 @@ To keep better organization of releases we follow the [Semantic Versioning 2.0.0
 
 ## Contributing
 
-Find on our [issues](https://github.com/afonsopacifer/bananacss/issues/) the next steps of the project ;)
+Find on our [issues](https://github.com/bananacss/bananacss/issues/) the next steps of the project ;)
 <br>
-Want to contribute? [Follow these recommendations](https://github.com/afonsopacifer/bananacss/blob/master/CONTRIBUTING.md).
+Want to contribute? [Follow these recommendations](https://github.com/bananacss/bananacss/blob/master/CONTRIBUTING.md).
 
 ## History
 
-See [Releases](https://github.com/afonsopacifer/bananacss/releases) for detailed changelog.
+See [Releases](https://github.com/bananacss/bananacss/releases) for detailed changelog.
 
 ## License
 
-[MIT License](https://github.com/afonsopacifer/bananacss/blob/master/LICENSE.md) © [Afonso Pacifer](http://afonsopacifer.com/)
+[MIT License](https://github.com/bananacss/bananacss/blob/master/LICENSE.md) © [Afonso Pacifer](http://afonsopacifer.com/)
