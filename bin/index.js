@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-var banana  = require('../src/banana.js'),
-    program = require('commander'),
-    pkg     = require('../package.json'),
-    fs  = require('fs');
+const banana  = require('../src/banana.js'),
+      program = require('commander'),
+      pkg     = require('../package.json'),
+      fs      = require('fs');
 
 program
   .version(pkg.version)
@@ -12,7 +12,7 @@ program
 
 program.parse(process.argv);
 
-var stylesheet = fs.readFileSync("../teste.bnn", 'utf8');
+let stylesheet = fs.readFileSync("../teste.bnn", 'utf8');
 
 banana.render(stylesheet);
 // if (program.yOption) banana.exampleTask2();
