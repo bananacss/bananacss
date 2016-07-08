@@ -37,7 +37,7 @@ $ npm install -g bananacss
 #### Module
 
 ```sh
-$ npm install bananacss
+$ npm install bananacss --save
 ```
 
 <hr>

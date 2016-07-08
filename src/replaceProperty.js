@@ -12,7 +12,7 @@ let replaceProperty = (astTree, customProperty, ...theArg) => {
       let declaration = rule.declarations[key];
 
       // Find the customProperty in the tree
-      if (declaration.property == customProperty) {
+      if (declaration.property === customProperty) {
 
         // Delete custom property
         rule.declarations.splice([key], 1);
@@ -32,6 +32,6 @@ let replaceProperty = (astTree, customProperty, ...theArg) => {
 
   }
 
-}
+};
 
 module.exports = replaceProperty;

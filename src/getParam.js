@@ -8,6 +8,6 @@ let getParam = (declarationValue, paramPosition) => {
     return declarationValueArray[0];
   }
 
-}
+};
 
 module.exports = getParam;

@@ -3,7 +3,7 @@
 const css = require('css'),
       replaceProperty = require('./replaceProperty');
 
-function banana() {
+function Banana() {
 
   this.render = (stylesheet) => {
 
@@ -20,8 +20,8 @@ function banana() {
     // console.log(astStringify);
     return astStringify;
 
-  }
+  };
 
 }
 
-module.exports = new banana();
+module.exports = new Banana();

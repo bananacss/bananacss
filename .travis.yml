@@ -3,6 +3,7 @@ node_js:
   - stable
 script:
   - "jshint bin/index.js"
+  - "jshint bin/fsRender.js"
   - "jshint src/banana.js"
   - "jshint src/getParam.js"
   - "jshint src/replaceProperty.js"

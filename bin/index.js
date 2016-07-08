@@ -5,6 +5,9 @@ const program  = require('commander'),
       chokidar = require('chokidar'),
       fsRender = require('./fsRender.js');
 
+let input_path,
+    output_path;
+
 // program configs
 program
   .version(pkg.version)
@@ -28,7 +31,7 @@ if (program.watch && program.out) {
   watcher.on('change', (input_path) => {
     fsRender(input_path, output_path);
     console.log('File', input_path, 'has been changed');
-  })
+  });
 
 } else if (program.watch) {
   // $ banana <input_path> -w
@@ -39,7 +42,7 @@ if (program.watch && program.out) {
   watcher.on('change', (input_path) => {
     fsRender(input_path, input_path);
     console.log('File', input_path, 'has been changed');
-  })
+  });
 
 } else if (program.out) {
   // $ banana <input_path> -o <output_path>

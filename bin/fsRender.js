@@ -9,6 +9,6 @@ let fsRender = (input, output) => {
   let cssStylesheet = banana.render(bnnStylesheet);
   // convert the .bnn to .css and write the .css file
   fs.writeFile(output.toString().replace(/.bnn/g,".css"), cssStylesheet);
-}
+};
 
 module.exports = fsRender;
