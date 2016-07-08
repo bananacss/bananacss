@@ -50,6 +50,12 @@ $ npm install bananacss
 $ banana <input_path>
 ```
 
+*Watch for changes.*
+
+```sh
+$ banana <input_path> -w
+```
+
 *Output to dir when passing files.*
 
 ```sh

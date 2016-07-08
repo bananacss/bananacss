@@ -1,32 +1,56 @@
 #!/usr/bin/env node
 
-const banana  = require('../src/banana.js'),
-      program = require('commander'),
-      pkg     = require('../package.json'),
-      fs      = require('fs');
+const program  = require('commander'),
+      pkg      = require('../package.json'),
+      chokidar = require('chokidar'),
+      fsRender = require('./fsRender.js');
 
 // program configs
 program
   .version(pkg.version)
   .description(pkg.description)
-  .option('-o, --out', "Output to <dir> when passing files")
+  .option('-o, --out', "output to <dir> when passing files")
+  .option('-w, --watch', "watch for changes")
   .arguments('<input_file> [output_file...]')
   .action((input_file, output_file = input_file) => {
     input_path  = input_file;
     output_path = output_file;
-  });
+  })
+  .parse(process.argv);
 
-program.parse(process.argv);
+// execute the program with corresponding option
+if (program.watch && program.out) {
+  // $ banana <input_path> -o -w <output_path>
+  console.log("Watching for changes...");
 
-// read the .bnn file
-let bnnStylesheet = fs.readFileSync(input_path, 'utf8');
+  // watch
+  let watcher = chokidar.watch(input_path, {persistent: true});
+  watcher.on('change', (input_path) => {
+    fsRender(input_path, output_path);
+    console.log('File', input_path, 'has been changed');
+  })
 
-// render the .bnn file
-let cssStylesheet = banana.render(bnnStylesheet);
+} else if (program.watch) {
+  // $ banana <input_path> -w
+  console.log("Watching for changes...");
 
-// execute the program with flags or not
-if (program.out) {
-  fs.writeFile(output_path.toString(), cssStylesheet);
+  // watch
+  let watcher = chokidar.watch(input_path, {persistent: true});
+  watcher.on('change', (input_path) => {
+    fsRender(input_path, input_path);
+    console.log('File', input_path, 'has been changed');
+  })
+
+} else if (program.out) {
+  // $ banana <input_path> -o <output_path>
+  console.log("Your file has been compiled");
+
+  fsRender(input_path, output_path);
+
 } else {
-  fs.writeFile(input_path.replace(/.bnn/g,".css"), cssStylesheet);
+  // $ banana <input_path>
+  console.log("Your file has been compiled");
+
+  fsRender(input_path, input_path);
+
 }

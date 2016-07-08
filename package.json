@@ -20,6 +20,7 @@
     "banana": "bin/index.js"
   },
   "dependencies": {
+    "chokidar": "^1.6.0",
     "commander": "^2.9.0",
     "css": "^2.2.1"
   },
@@ -28,7 +29,6 @@
   },
   "devDependencies": {
     "jshint": "^2.8.0",
-    "mocha": "^2.2.3",
-    "should": "^9.0.2"
+    "mocha": "^2.2.3"
   }
 }
