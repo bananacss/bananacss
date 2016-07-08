@@ -15,7 +15,7 @@
   },
   "keywords": [],
   "preferGlobal": true,
-  "main": "src/index.js",
+  "main": "src/banana.js",
   "bin": {
     "bananacss": "bin/index.js"
   },
