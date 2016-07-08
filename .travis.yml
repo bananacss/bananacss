@@ -2,4 +2,8 @@ language: node_js
 node_js:
   - stable
 script:
+  - "jshint bin/index.js"
+  - "jshint src/banana.js"
+  - "jshint src/getParam.js"
+  - "jshint src/replaceProperty.js"
   - "npm test"
