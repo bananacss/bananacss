@@ -1,7 +1,7 @@
 'use strict';
 
 const css = require('css'),
-      replaceProperty = require('./replaceProperty');
+      setShorthand = require('./setShorthand');
 
 function Banana() {
 
@@ -10,9 +10,9 @@ function Banana() {
     // Create the AST Tree
     let ast = css.parse(stylesheet);
 
-    // Search the Custom custom properties and replace for css properties and values
-    replaceProperty(ast,"bnn-size","width","height");
-    replaceProperty(ast,"bnn-position","top","right","bottom","left");
+    // Set all Shorthands
+    setShorthand(ast,"bnn-size","width","height");
+    setShorthand(ast,"bnn-position","top","right","bottom","left");
 
     // stringify the AST Tree
     let astStringify = css.stringify(ast);

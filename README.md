@@ -1,4 +1,4 @@
-# bananacss
+# Banana CSS
 
 > :banana: A brazilian css superset.
 
@@ -91,15 +91,18 @@ let output = banana.render(path);
 ## Custom properties available
 
 ### bnn-size
-.style.bnn [input]
+
+*Banana code:*
 ```css
+/* style.bnn */
 .demo {
   bnn-size: 50px 100px;
 }
 ```
 
-.style.css [output]
+*Result:*
 ```css
+/* style.css */
 .demo {
   width: 50px;
   height: 100px;
@@ -107,15 +110,18 @@ let output = banana.render(path);
 ```
 
 ### bnn-position
-.style.bnn [input]
+
+*Banana code:*
 ```css
+/* style.bnn */
 .demo {
   bnn-position: 10px 5px 8px 90px;
 }
 ```
 
-.style.css [output]
+*Result:*
 ```css
+/* style.css */
 .demo {
   top: 10px;
   right: 5px;

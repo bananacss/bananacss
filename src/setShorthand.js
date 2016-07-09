@@ -1,6 +1,6 @@
 const getParam = require('./getParam');
 
-let replaceProperty = (astTree, customProperty, ...theArg) => {
+let setShorthand = (astTree, customProperty, ...theArg) => {
   let rules = astTree.stylesheet.rules;
 
   // Search the rule
@@ -34,4 +34,4 @@ let replaceProperty = (astTree, customProperty, ...theArg) => {
 
 };
 
-module.exports = replaceProperty;
+module.exports = setShorthand;

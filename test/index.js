@@ -20,20 +20,20 @@ describe('render()', () => {
 });
 
 // ---------------------------------
-// replaceProperty()
+// setShorthand()
 // ---------------------------------
 
-describe('replaceProperty()', () => {
+describe('setShorthand()', () => {
 
   const css = require('css');
-  const replaceProperty = require('../src/replaceProperty.js');
+  const setShorthand = require('../src/setShorthand.js');
 
   it("Should search for a 'bnn-size' and replace for css normal properties", () => {
 
     let stylesheet = ".a {color:#000; bnn-size: 50px 100px;}";
     let ast = css.parse(stylesheet);
 
-    replaceProperty(ast,"bnn-size","width","height");
+    setShorthand(ast,"bnn-size","width","height");
 
     let result = css.stringify(ast);
     let expect = ".a {\n  color: #000;\n  width: 50px;\n  height: 100px;\n}";
