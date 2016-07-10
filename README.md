@@ -16,6 +16,7 @@
 - [Custom properties available](#custom-properties-available)
   - [bnn-size](#bnn-size)
   - [bnn-position](#bnn-position)
+  - [bnn-align](#bnn-align)
 - [Tests](#tests)
 - [Versioning](#versioning)
 - [Contributing](#contributing)
@@ -127,6 +128,25 @@ let output = banana.render(path);
   right: 5px;
   bottom: 8px;
   left: 90px;
+}
+```
+
+### bnn-align
+
+*Banana code:*
+```css
+/* style.bnn */
+.demo {
+  bnn-align: center;
+}
+```
+
+*Result:*
+```css
+/* style.css */
+.demo {
+  margin-left: auto;
+  margin-right: auto;
 }
 ```
 
