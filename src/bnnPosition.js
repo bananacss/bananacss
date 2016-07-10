@@ -26,7 +26,7 @@ let bnnPosition = (declarations) => {
 
       declarations.push({
         type: 'declaration',
-        property: 'left',
+        property: 'right',
         value: propertyValue2
       });
 
@@ -38,7 +38,7 @@ let bnnPosition = (declarations) => {
 
       declarations.push({
         type: 'declaration',
-        property: 'right',
+        property: 'left',
         value: propertyValue4
       });
 
