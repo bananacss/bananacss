@@ -1,7 +1,9 @@
 'use strict';
 
 const css = require('css'),
-      setShorthand = require('./setShorthand');
+      bnnSize  = require('./bnnSize.js'),
+      bnnPosition = require('./bnnPosition.js'),
+      bnnAlign = require('./bnnAlign.js');
 
 function Banana() {
 
@@ -10,15 +12,21 @@ function Banana() {
     // Create the AST Tree
     let ast = css.parse(stylesheet);
 
-    // Set all Shorthands
-    setShorthand(ast,"bnn-size","width","height");
-    setShorthand(ast,"bnn-position","top","right","bottom","left");
+    // Search for rules
+    ast.stylesheet.rules.forEach((rule) => {
 
-    // stringify the AST Tree
-    let astStringify = css.stringify(ast);
+      // Verifies that the rule is a selector
+      if (rule.selectors) {
+        // Get custom declarations and create new declarations
+        bnnSize(rule.declarations);
+        bnnPosition(rule.declarations);
+        bnnAlign(rule.declarations);
+      }
 
-    // console.log(astStringify);
-    return astStringify;
+    });
+
+    // Return the stringify AST
+    return css.stringify(ast);
 
   };
 

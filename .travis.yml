@@ -6,5 +6,7 @@ script:
   - "jshint bin/fsRender.js"
   - "jshint src/banana.js"
   - "jshint src/getParam.js"
-  - "jshint src/replaceProperty.js"
+  - "jshint src/bnnSize.js"
+  - "jshint src/bnnPosition.js"
+  - "jshint src/bnnAlign.js"
   - "npm test"
