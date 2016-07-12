@@ -17,30 +17,56 @@ let bnnPosition = (declarations) => {
       let propertyValue3 = getParam(declaration.value, 2);
       let propertyValue4 = getParam(declaration.value, 3);
 
-      // Add properties and values
-      declarations.push({
-        type: 'declaration',
-        property: 'top',
-        value: propertyValue1
-      });
+      //verify the property value
+      if (propertyValue1 === "center") {
 
-      declarations.push({
-        type: 'declaration',
-        property: 'right',
-        value: propertyValue2
-      });
+        // Add properties and values
+        declarations.push({
+          type: 'declaration',
+          property: 'display',
+          value: "block"
+        });
 
-      declarations.push({
-        type: 'declaration',
-        property: 'bottom',
-        value: propertyValue3
-      });
+        declarations.push({
+          type: 'declaration',
+          property: 'margin-left',
+          value: "auto"
+        });
 
-      declarations.push({
-        type: 'declaration',
-        property: 'left',
-        value: propertyValue4
-      });
+        declarations.push({
+          type: 'declaration',
+          property: 'margin-right',
+          value: "auto"
+        });
+
+      } else {
+
+        // Add properties and values
+        declarations.push({
+          type: 'declaration',
+          property: 'top',
+          value: propertyValue1
+        });
+
+        declarations.push({
+          type: 'declaration',
+          property: 'right',
+          value: propertyValue2
+        });
+
+        declarations.push({
+          type: 'declaration',
+          property: 'bottom',
+          value: propertyValue3
+        });
+
+        declarations.push({
+          type: 'declaration',
+          property: 'left',
+          value: propertyValue4
+        });
+
+      }
 
     }
 

@@ -8,5 +8,5 @@ script:
   - "jshint src/getParam.js"
   - "jshint src/bnnSize.js"
   - "jshint src/bnnPosition.js"
-  - "jshint src/bnnAlign.js"
+  - "jshint src/bnnGradient.js"
   - "npm test"

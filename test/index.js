@@ -99,27 +99,17 @@ describe('bnnPosition()', () => {
     assert.equal(result, expect);
   });
 
-});
+  // bnnPosition() test 3
+  it("If the value is center, should return a block centered element", () => {
 
-// ---------------------------------
-// bnnAlign()
-// ---------------------------------
-
-describe('bnnAlign()', () => {
-
-  const bnnAlign = require('../src/bnnAlign.js');
-
-  // bnnAlign() test 1
-  it("If the value is center, should return a margin-left: auto; and margin-right: auto.", () => {
-
-    let ast = css.parse(".a{bnn-align: center;}");
+    let ast = css.parse(".a{bnn-position: center;}");
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnAlign(rule.declarations);
+      if (rule.selectors) bnnPosition(rule.declarations);
     });
 
     let result = css.stringify(ast);
-    let expect = ".a {\n  margin-left: auto;\n  margin-right: auto;\n}";
+    let expect = ".a {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}";
 
     assert.equal(result, expect);
   });
