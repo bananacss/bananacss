@@ -9,4 +9,5 @@ script:
   - "jshint src/bnnSize.js"
   - "jshint src/bnnPosition.js"
   - "jshint src/bnnGradient.js"
+  - "jshint src/bnnAlign.js"
   - "npm test"

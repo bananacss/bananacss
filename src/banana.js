@@ -1,9 +1,10 @@
 'use strict';
 
 const css = require('css'),
-      bnnSize  = require('./bnnSize.js'),
+      bnnSize     = require('./bnnSize.js'),
       bnnPosition = require('./bnnPosition.js'),
-      bnnGradient = require('./bnnGradient.js');
+      bnnGradient = require('./bnnGradient.js'),
+      bnnAlign    = require('./bnnAlign.js');
 
 function Banana() {
 
@@ -21,6 +22,7 @@ function Banana() {
         bnnSize(rule.declarations);
         bnnPosition(rule.declarations);
         bnnGradient(rule.declarations);
+        bnnAlign(rule.declarations);
       }
 
     });
