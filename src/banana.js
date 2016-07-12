@@ -3,7 +3,8 @@
 const css = require('css'),
       bnnSize  = require('./bnnSize.js'),
       bnnPosition = require('./bnnPosition.js'),
-      bnnAlign = require('./bnnAlign.js');
+      bnnAlign = require('./bnnAlign.js'),
+      bnnGradient = require('./bnnGradient.js');
 
 function Banana() {
 
@@ -21,6 +22,7 @@ function Banana() {
         bnnSize(rule.declarations);
         bnnPosition(rule.declarations);
         bnnAlign(rule.declarations);
+        bnnGradient(rule.declarations);
       }
 
     });

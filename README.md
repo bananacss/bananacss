@@ -18,6 +18,7 @@
   - [bnn-size](#bnn-size)
   - [bnn-position](#bnn-position)
   - [bnn-align](#bnn-align)
+  - [bnn-gradient](#bnn-gradient)
 - [Tests](#tests)
 - [Versioning](#versioning)
 - [Contributing](#contributing)
@@ -148,6 +149,24 @@ let output = banana.render(path);
 .demo {
   margin-left: auto;
   margin-right: auto;
+}
+```
+
+### bnn-gradient
+
+*Banana code:*
+```css
+/* style.bnn */
+.demo {
+  bnn-gradient: #f9e400 #ff9c00 vertical;
+}
+```
+
+*Result:*
+```css
+/* style.css */
+.demo {
+  background-image: linear-gradient(to bottom, #f9e400, #ff9c00);
 }
 ```
 
