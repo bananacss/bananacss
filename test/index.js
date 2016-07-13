@@ -13,7 +13,7 @@ describe('render()', () => {
   it("should return the fully rendered css", () => {
     let stylesheet = ".a {color:#000;bnn-size: 50px 100px;}.b {color:#000;bnn-position: 10px 5px 8px 90px;margin: 10px;}";
 
-    let result = banana.render(stylesheet);
+    let result = banana.render("teste.bnn", stylesheet);
     let expect = ".a {\n  color: #000;\n  width: 50px;\n  height: 100px;\n}\n\n.b {\n  color: #000;\n  margin: 10px;\n  top: 10px;\n  right: 5px;\n  bottom: 8px;\n  left: 90px;\n}";
 
     assert.equal(result, expect);
@@ -355,6 +355,31 @@ describe('bnnAlign()', () => {
 
     let result = css.stringify(ast);
     let expect = ".a {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: flex-end;\n  align-items: center;\n}";
+
+    assert.equal(result, expect);
+  });
+
+});
+
+// ---------------------------------
+// bnnImport()
+// ---------------------------------
+
+describe('bnnImport()', () => {
+
+  const bnnImport = require('../src/bnnImport.js');
+
+  // bnnImport() test 1
+  it("Should return the modulo.bnn file imported into the main.bnn file", () => {
+
+    let ast = css.parse("@import fixtures/module.bnn; .a{width: 500px;}");
+
+    ast.stylesheet.rules.forEach((rule, index) => {
+      if (rule.import) bnnImport("test/main.bnn", rule.import, ast.stylesheet.rules, index);
+    });
+
+    let result = css.stringify(ast);
+    let expect = ".a {\n  width: 500px;\n}\n\n.b {\n  color: #000;\n}";
 
     assert.equal(result, expect);
   });

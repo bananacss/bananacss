@@ -46,14 +46,15 @@ if (program.watch && program.out) {
 
 } else if (program.out) {
   // $ banana <input_path> -o <output_path>
-  console.log("Your file has been compiled");
-
   fsRender(input_path, output_path);
+  console.log("Your file has been compiled");
 
 } else {
   // $ banana <input_path>
+  fsRender(input_path, input_path);
   console.log("Your file has been compiled");
 
-  fsRender(input_path, input_path);
-
 }
+
+// Export the input_path
+exports.inputPath = () => input_path;
