@@ -317,3 +317,11 @@ E `propertyValue2` é testado para:
 - top
 - bottom
 - center
+
+Logo sabendo disso podemos inferir que `propertyValue1` é para o **horizontal** e o `propertyValue2` para o **vertical**, certo?
+
+> Como assim Suissa?
+
+**Uai simples!** O `propertyValue1` aceita `left` e `right` e o `propertyValue2` aceita `top` e `bottom, além do `center` para os dois.
+
+Então ficou claro para que serve cada uma não!?
