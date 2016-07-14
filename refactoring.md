@@ -1076,3 +1076,8 @@ Agora eu lhe pergunto:
 Se você não sabe eu te respondo:
 
 > **Não faz!**
+
+Então o que devemos fazer?
+
+> MODULARIZAR ESSA PORRAAAA!
+
