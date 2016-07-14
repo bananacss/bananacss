@@ -1366,3 +1366,27 @@ E agora podemos executar os testes como antes com `npm test` além de pode execu
 
   24 passing (37ms)
 ```
+
+Agora basta fazer o mesmo para todos os outros testes deixando o `test/index.js` assim:
+
+```js
+// Modulo de testes
+require('./render.test.js')
+require('./bnnAlign.test.js')
+require('./bnnSize.test.js')
+require('./bnnPosition.test.js')
+require('./bnnGradient.test.js')
+require('./bnnImport.test.js')
+require('./getParam.test.js')
+```
+
+Pois dessa forma o `npm test` irá rodar todos os testes e caso você queira executar qualquer teste específico basta executar `mocha test/nomeDoArquivo.js`.
+
+
+E aí o que achou dessa refatoração?
+
+O que você sugere que podemos melhorar?
+
+Por favor deixe sua sugestão nas [issues](https://github.com/bananacss/bananacss/issues)
+
+*Refatoração by [suissa](https://github.com/suissa)*

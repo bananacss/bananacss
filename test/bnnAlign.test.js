@@ -1,5 +1,5 @@
-const assert = require('assert'),
-      css    = require('css');
+const assert = require('assert');
+const css    = require('css');
 
 // ---------------------------------
 // bnnAlign()
