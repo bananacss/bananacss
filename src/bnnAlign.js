@@ -9,12 +9,59 @@ let bnnAlign = (declarations) => {
     if (declaration.property === "bnn-align") {
 
       // Delete a custom property
-      declarations.splice(index, 1);
+      declarations.splice(index, 1)
 
       //Filter values
-      let propertyHorizontal = getParam(declaration.value, 0);
-      let propertyVertical = getParam(declaration.value, 1);
+      const propertyHorizontal = getParam(declaration.value, 0)
+      const propertyVertical = getParam(declaration.value, 1)
 
+      const horizontalValues = [
+        { type: "left",
+          declarations: {
+            type: 'declaration',
+            property: 'justify-content',
+            value: 'flex-start'
+          }
+        },
+        { type: "right",
+          declarations: {
+            type: 'declaration',
+            property: 'justify-content',
+            value: 'flex-start'
+          }
+        },
+        { type: "center",
+          declarations: {
+            type: 'declaration',
+            property: 'justify-content',
+            value: propertyHorizontal
+          }
+        }
+      ]
+      const verticalValues = [
+        { type: "top",
+          declarations: {
+            type: 'declaration',
+            property: 'align-items',
+            value: 'flex-start'
+          }
+        },
+        { type: "bottom",
+          declarations: {
+            type: 'declaration',
+            property: 'align-items',
+            value: 'flex-end'
+          }
+        },
+        { type: "center",
+          declarations: {
+            type: 'declaration',
+            property: 'align-items',
+            value: propertyVertical
+          }
+        }
+      ]
+      // const horizontalValues = ["top", "bottom", "center"]
       // Add properties and values
       declarations.push({
         type: 'declaration',
@@ -29,54 +76,68 @@ let bnnAlign = (declarations) => {
       });
 
       // verify the first value
-      if (propertyHorizontal === "left") {
-        declarations.push({
-          type: 'declaration',
-          property: 'justify-content',
-          value: 'flex-start'
-        });
-      }
+      horizontalValues.forEach( (element, index) => {
+        // console.log('propertyHorizontal', propertyHorizontal)
+        // console.log('element.type', element.type)
+        // console.log('element.declarations', element.declarations)
+        if(element.type === propertyHorizontal) declarations.push(element.declarations)
+        // console.log('declarations', declarations)
+      });
+      verticalValues.forEach( (element, index) => {
+        // console.log('propertyHorizontal', propertyHorizontal)
+        // console.log('element.type', element.type)
+        // console.log('element.declarations', element.declarations)
+        if(element.type === propertyVertical) declarations.push(element.declarations)
+        // console.log('declarations', declarations)
+      });
+      // if (propertyHorizontal === "left") {
+      //   declarations.push({
+      //     type: 'declaration',
+      //     property: 'justify-content',
+      //     value: 'flex-start'
+      //   });
+      // }
 
-      if (propertyHorizontal === "right") {
-        declarations.push({
-          type: 'declaration',
-          property: 'justify-content',
-          value: 'flex-end'
-        });
-      }
+      // if (propertyHorizontal === "right") {
+      //   declarations.push({
+      //     type: 'declaration',
+      //     property: 'justify-content',
+      //     value: 'flex-end'
+      //   });
+      // }
 
-      if (propertyHorizontal === "center") {
-        declarations.push({
-          type: 'declaration',
-          property: 'justify-content',
-          value: propertyHorizontal
-        });
-      }
+      // if (propertyHorizontal === "center") {
+      //   declarations.push({
+      //     type: 'declaration',
+      //     property: 'justify-content',
+      //     value: propertyHorizontal
+      //   });
+      // }
 
       // verify the property with second value
-      if (propertyVertical === "top") {
-        declarations.push({
-          type: 'declaration',
-          property: 'align-items',
-          value: 'flex-start'
-        });
-      }
+      // if (propertyVertical === "top") {
+      //   declarations.push({
+      //     type: 'declaration',
+      //     property: 'align-items',
+      //     value: 'flex-start'
+      //   });
+      // }
 
-      if (propertyVertical === "bottom") {
-        declarations.push({
-          type: 'declaration',
-          property: 'align-items',
-          value: 'flex-end'
-        });
-      }
+      // if (propertyVertical === "bottom") {
+      //   declarations.push({
+      //     type: 'declaration',
+      //     property: 'align-items',
+      //     value: 'flex-end'
+      //   });
+      // }
 
-      if (propertyVertical === "center") {
-        declarations.push({
-          type: 'declaration',
-          property: 'align-items',
-          value: propertyVertical
-        });
-      }
+      // if (propertyVertical === "center") {
+      //   declarations.push({
+      //     type: 'declaration',
+      //     property: 'align-items',
+      //     value: propertyVertical
+      //   });
+      // }
 
     }
 
