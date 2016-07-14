@@ -78,7 +78,7 @@ function Banana(config) {
 
 > Ué Suissa mas vc tá loco? De onde vem esse `config`?
 
-**Então meu caro gafanhoto! Ele deverá vir do arquivo que está chamando o `Banana`, por exemplo vamos criar o `index.js`:
+**Então meu caro gafanhoto!** Ele deverá vir do arquivo que está chamando o `Banana`, por exemplo vamos criar o `index.js`:
 
 
 ```js
