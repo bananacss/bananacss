@@ -1,17 +1,10 @@
 'use strict';
 
 const css = require('css')
-      // bnnSize     = require('./bnnSize.js'),
-      // bnnPosition = require('./bnnPosition.js'),
-      // bnnGradient = require('./bnnGradient.js'),
-      // bnnImport    = require('./bnnImport.js'),
-      // bnnAlign    = require('./bnnAlign.js');
 
-function Banana(config) {
-
+const Banana = (config) => {
   return {
     render: (inputPath, stylesheet) => {
-
       // Create the AST Tree
       let ast = css.parse(stylesheet);
 
@@ -35,13 +28,10 @@ function Banana(config) {
           config.bnnAlign(rule.declarations);
         }
       });
-
       // Return the stringify AST
       return css.stringify(ast);
-
     }
   }
-
 }
 
-module.exports = {run: Banana, render: Banana};
+module.exports = { run: Banana };
