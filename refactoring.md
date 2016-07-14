@@ -425,3 +425,8 @@ module.exports = bnnAlign;
 Agora vamos tentar **automatizar** esses testes!
 
 O que devemos fazer é encapsular esses objetos que são usados em `declarations.push` dentro de cada `if`.
+
+
+
+
+## Refatoração dos testes

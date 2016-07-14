@@ -27,7 +27,7 @@ let bnnAlign = (declarations) => {
           declarations: {
             type: 'declaration',
             property: 'justify-content',
-            value: 'flex-start'
+            value: 'flex-end'
           }
         },
         { type: "center",
@@ -61,7 +61,6 @@ let bnnAlign = (declarations) => {
           }
         }
       ]
-      // const horizontalValues = ["top", "bottom", "center"]
       // Add properties and values
       declarations.push({
         type: 'declaration',
@@ -77,18 +76,10 @@ let bnnAlign = (declarations) => {
 
       // verify the first value
       horizontalValues.forEach( (element, index) => {
-        // console.log('propertyHorizontal', propertyHorizontal)
-        // console.log('element.type', element.type)
-        // console.log('element.declarations', element.declarations)
         if(element.type === propertyHorizontal) declarations.push(element.declarations)
-        // console.log('declarations', declarations)
       });
       verticalValues.forEach( (element, index) => {
-        // console.log('propertyHorizontal', propertyHorizontal)
-        // console.log('element.type', element.type)
-        // console.log('element.declarations', element.declarations)
         if(element.type === propertyVertical) declarations.push(element.declarations)
-        // console.log('declarations', declarations)
       });
       // if (propertyHorizontal === "left") {
       //   declarations.push({

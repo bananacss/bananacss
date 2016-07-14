@@ -240,7 +240,6 @@ describe('bnnAlign()', () => {
 
     let result = css.stringify(ast);
     let expect = ".a {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: flex-end;\n}";
-
     assert.equal(result, expect);
   });
 
