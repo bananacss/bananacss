@@ -74,64 +74,15 @@ let bnnAlign = (declarations) => {
         value: "wrap"
       });
 
-      // verify the first value
-      horizontalValues.forEach( (element, index) => {
-        if(element.type === propertyHorizontal) declarations.push(element.declarations)
-      });
-      verticalValues.forEach( (element, index) => {
-        if(element.type === propertyVertical) declarations.push(element.declarations)
-      });
-      // if (propertyHorizontal === "left") {
-      //   declarations.push({
-      //     type: 'declaration',
-      //     property: 'justify-content',
-      //     value: 'flex-start'
-      //   });
-      // }
-
-      // if (propertyHorizontal === "right") {
-      //   declarations.push({
-      //     type: 'declaration',
-      //     property: 'justify-content',
-      //     value: 'flex-end'
-      //   });
-      // }
-
-      // if (propertyHorizontal === "center") {
-      //   declarations.push({
-      //     type: 'declaration',
-      //     property: 'justify-content',
-      //     value: propertyHorizontal
-      //   });
-      // }
-
-      // verify the property with second value
-      // if (propertyVertical === "top") {
-      //   declarations.push({
-      //     type: 'declaration',
-      //     property: 'align-items',
-      //     value: 'flex-start'
-      //   });
-      // }
-
-      // if (propertyVertical === "bottom") {
-      //   declarations.push({
-      //     type: 'declaration',
-      //     property: 'align-items',
-      //     value: 'flex-end'
-      //   });
-      // }
-
-      // if (propertyVertical === "center") {
-      //   declarations.push({
-      //     type: 'declaration',
-      //     property: 'align-items',
-      //     value: propertyVertical
-      //   });
-      // }
-
+      const testHorizontal = (element, index) => {
+        if (element.type === propertyHorizontal) declarations.push(element.declarations)
+      }
+      const testVertical = (element, index) => {
+        if (element.type === propertyVertical) declarations.push(element.declarations)
+      }
+      horizontalValues.forEach(testHorizontal)
+      verticalValues.forEach(testVertical)
     }
-
   });
 
 };

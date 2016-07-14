@@ -424,9 +424,168 @@ module.exports = bnnAlign;
 
 Agora vamos tentar **automatizar** esses testes!
 
-O que devemos fazer é encapsular esses objetos que são usados em `declarations.push` dentro de cada `if`.
+O que devemos fazer é encapsular esses objetos que são usados em `declarations.push` dentro de cada `if` dessa forma:
 
+```js
+const horizontalValues = [
+  { type: "left",
+    declarations: {
+      type: 'declaration',
+      property: 'justify-content',
+      value: 'flex-start'
+    }
+  },
+  { type: "right",
+    declarations: {
+      type: 'declaration',
+      property: 'justify-content',
+      value: 'flex-end'
+    }
+  },
+  { type: "center",
+    declarations: {
+      type: 'declaration',
+      property: 'justify-content',
+      value: propertyHorizontal
+    }
+  }
+]
+const verticalValues = [
+  { type: "top",
+    declarations: {
+      type: 'declaration',
+      property: 'align-items',
+      value: 'flex-start'
+    }
+  },
+  { type: "bottom",
+    declarations: {
+      type: 'declaration',
+      property: 'align-items',
+      value: 'flex-end'
+    }
+  },
+  { type: "center",
+    declarations: {
+      type: 'declaration',
+      property: 'align-items',
+      value: propertyVertical
+    }
+  }
+]
+```
 
+Ok! Agora nós vamos **iterar** nesse *Array* para automatizar os testes que tinham antes ficando assim:
 
+```js
+const testHorizontal = (element, index) => {
+  if (element.type === propertyHorizontal) declarations.push(element.declarations)
+}
+const testVertical = (element, index) => {
+  if (element.type === propertyVertical) declarations.push(element.declarations)
+}
+horizontalValues.forEach(testHorizontal)
+verticalValues.forEach(testVertical)
+}
+```
+
+Perceba que eu separei as funções executadas no `forEach` para facilitar a leitura e manutenção.
+
+Agora vamos juntar tudo deixando nosso código assim:
+
+```js
+const getParam = require('./getParam.js');
+
+let bnnAlign = (declarations) => {
+
+  // Search for declarations
+  declarations.forEach((declaration, index) => {
+
+    // Find a custom property
+    if (declaration.property === "bnn-align") {
+
+      // Delete a custom property
+      declarations.splice(index, 1)
+
+      //Filter values
+      const propertyHorizontal = getParam(declaration.value, 0)
+      const propertyVertical = getParam(declaration.value, 1)
+
+      const horizontalValues = [
+        { type: "left",
+          declarations: {
+            type: 'declaration',
+            property: 'justify-content',
+            value: 'flex-start'
+          }
+        },
+        { type: "right",
+          declarations: {
+            type: 'declaration',
+            property: 'justify-content',
+            value: 'flex-end'
+          }
+        },
+        { type: "center",
+          declarations: {
+            type: 'declaration',
+            property: 'justify-content',
+            value: propertyHorizontal
+          }
+        }
+      ]
+      const verticalValues = [
+        { type: "top",
+          declarations: {
+            type: 'declaration',
+            property: 'align-items',
+            value: 'flex-start'
+          }
+        },
+        { type: "bottom",
+          declarations: {
+            type: 'declaration',
+            property: 'align-items',
+            value: 'flex-end'
+          }
+        },
+        { type: "center",
+          declarations: {
+            type: 'declaration',
+            property: 'align-items',
+            value: propertyVertical
+          }
+        }
+      ]
+      // Add properties and values
+      declarations.push({
+        type: 'declaration',
+        property: 'display',
+        value: "flex"
+      });
+
+      declarations.push({
+        type: 'declaration',
+        property: 'flex-wrap',
+        value: "wrap"
+      });
+
+      const testHorizontal = (element, index) => {
+        if (element.type === propertyHorizontal) declarations.push(element.declarations)
+      }
+      const testVertical = (element, index) => {
+        if (element.type === propertyVertical) declarations.push(element.declarations)
+      }
+      horizontalValues.forEach(testHorizontal)
+      verticalValues.forEach(testVertical)
+    }
+  });
+
+};
+
+module.exports = bnnAlign;
+```
+
+E se quisermos também podemos modularizar esses objetos: `horizontalValues` e `verticalValues`. Porém por hora deixaremos assim.
 
 ## Refatoração dos testes
