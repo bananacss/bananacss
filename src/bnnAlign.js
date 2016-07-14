@@ -12,8 +12,8 @@ let bnnAlign = (declarations) => {
       declarations.splice(index, 1);
 
       //Filter values
-      let propertyValue1 = getParam(declaration.value, 0);
-      let propertyValue2 = getParam(declaration.value, 1);
+      let propertyHorizontal = getParam(declaration.value, 0);
+      let propertyVertical = getParam(declaration.value, 1);
 
       // Add properties and values
       declarations.push({
@@ -29,7 +29,7 @@ let bnnAlign = (declarations) => {
       });
 
       // verify the first value
-      if (propertyValue1 === "left") {
+      if (propertyHorizontal === "left") {
         declarations.push({
           type: 'declaration',
           property: 'justify-content',
@@ -37,7 +37,7 @@ let bnnAlign = (declarations) => {
         });
       }
 
-      if (propertyValue1 === "right") {
+      if (propertyHorizontal === "right") {
         declarations.push({
           type: 'declaration',
           property: 'justify-content',
@@ -45,16 +45,16 @@ let bnnAlign = (declarations) => {
         });
       }
 
-      if (propertyValue1 === "center") {
+      if (propertyHorizontal === "center") {
         declarations.push({
           type: 'declaration',
           property: 'justify-content',
-          value: propertyValue1
+          value: propertyHorizontal
         });
       }
 
       // verify the property with second value
-      if (propertyValue2 === "top") {
+      if (propertyVertical === "top") {
         declarations.push({
           type: 'declaration',
           property: 'align-items',
@@ -62,7 +62,7 @@ let bnnAlign = (declarations) => {
         });
       }
 
-      if (propertyValue2 === "bottom") {
+      if (propertyVertical === "bottom") {
         declarations.push({
           type: 'declaration',
           property: 'align-items',
@@ -70,11 +70,11 @@ let bnnAlign = (declarations) => {
         });
       }
 
-      if (propertyValue2 === "center") {
+      if (propertyVertical === "center") {
         declarations.push({
           type: 'declaration',
           property: 'align-items',
-          value: propertyValue2
+          value: propertyVertical
         });
       }
 
