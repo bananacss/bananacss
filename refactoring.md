@@ -51,7 +51,7 @@ function Banana() {
 module.exports = new Banana();
 ```
 
-A primeira coisa que notei é que temos a iportação de outros módulos como:
+A primeira coisa que notei é que temos a importação de outros módulos como:
 
 - bnnSize
 - bnnPosition
