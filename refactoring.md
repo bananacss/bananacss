@@ -1081,3 +1081,288 @@ Então o que devemos fazer?
 
 > MODULARIZAR ESSA PORRAAAA!
 
+O jeito mais fácil é retirarmos todo o conteúdo de `describe('bnnAlign()'` e salvar em um arquivo chamado `test/bnnAlign.test.js`:
+
+```js
+const assert = require('assert'),
+      css    = require('css');
+
+// ---------------------------------
+// bnnAlign()
+// ---------------------------------
+
+describe('bnnAlign()', () => {
+
+  const bnnAlign = require('../src/bnnAlign.js');
+
+  // bnnAlign() test 1
+  it("Should return a vertical and horizontal centralized flex container with one value", () => {
+
+    let ast = css.parse(".a{bnn-align: center;}");
+
+    ast.stylesheet.rules.forEach((rule) => {
+      if (rule.selectors) bnnAlign(rule.declarations);
+    });
+
+    let result = css.stringify(ast);
+    let expect = ".a {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  align-items: center;\n}";
+
+    assert.equal(result, expect);
+  });
+
+  // bnnAlign() test 2
+  it("Should return a vertical and horizontal centralized flex container with two values", () => {
+
+    let ast = css.parse(".a{bnn-align: center center;}");
+
+    ast.stylesheet.rules.forEach((rule) => {
+      if (rule.selectors) bnnAlign(rule.declarations);
+    });
+
+    let result = css.stringify(ast);
+    let expect = ".a {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  align-items: center;\n}";
+
+    assert.equal(result, expect);
+  });
+
+  // bnnAlign() test 3
+  it("Should return a flex container aligned to left with one value", () => {
+
+    let ast = css.parse(".a{bnn-align: left;}");
+
+    ast.stylesheet.rules.forEach((rule) => {
+      if (rule.selectors) bnnAlign(rule.declarations);
+    });
+
+    let result = css.stringify(ast);
+    let expect = ".a {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}";
+
+    assert.equal(result, expect);
+  });
+
+  // bnnAlign() test 4
+  it("Should return a flex container aligned to right with one value", () => {
+
+    let ast = css.parse(".a{bnn-align: right;}");
+
+    ast.stylesheet.rules.forEach((rule) => {
+      if (rule.selectors) bnnAlign(rule.declarations);
+    });
+
+    let result = css.stringify(ast);
+    let expect = ".a {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: flex-end;\n}";
+    assert.equal(result, expect);
+  });
+
+  // bnnAlign() test 5
+  it("Should return a flex container, with the content to top with one value", () => {
+
+    let ast = css.parse(".a{bnn-align: top;}");
+
+    ast.stylesheet.rules.forEach((rule) => {
+      if (rule.selectors) bnnAlign(rule.declarations);
+    });
+
+    let result = css.stringify(ast);
+    let expect = ".a {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: flex-start;\n}";
+
+    assert.equal(result, expect);
+  });
+
+  // bnnAlign() test 6
+  it("Should return a flex container, with the content to bottom with one value", () => {
+
+    let ast = css.parse(".a{bnn-align: bottom;}");
+
+    ast.stylesheet.rules.forEach((rule) => {
+      if (rule.selectors) bnnAlign(rule.declarations);
+    });
+
+    let result = css.stringify(ast);
+    let expect = ".a {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: flex-end;\n}";
+
+    assert.equal(result, expect);
+  });
+
+  // bnnAlign() test 7
+  it("Should return a flex container, with the content to left and top", () => {
+
+    let ast = css.parse(".a{bnn-align: left top;}");
+
+    ast.stylesheet.rules.forEach((rule) => {
+      if (rule.selectors) bnnAlign(rule.declarations);
+    });
+
+    let result = css.stringify(ast);
+    let expect = ".a {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n  align-items: flex-start;\n}";
+
+    assert.equal(result, expect);
+  });
+
+  // bnnAlign() test 9
+  it("Should return a flex container, with the content to left and bottom", () => {
+
+    let ast = css.parse(".a{bnn-align: left bottom;}");
+
+    ast.stylesheet.rules.forEach((rule) => {
+      if (rule.selectors) bnnAlign(rule.declarations);
+    });
+
+    let result = css.stringify(ast);
+    let expect = ".a {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n  align-items: flex-end;\n}";
+
+    assert.equal(result, expect);
+  });
+
+  // bnnAlign() test 10
+  it("Should return a flex container, with the content to right and top", () => {
+
+    let ast = css.parse(".a{bnn-align: right top;}");
+
+    ast.stylesheet.rules.forEach((rule) => {
+      if (rule.selectors) bnnAlign(rule.declarations);
+    });
+
+    let result = css.stringify(ast);
+    let expect = ".a {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: flex-end;\n  align-items: flex-start;\n}";
+
+    assert.equal(result, expect);
+  });
+
+  // bnnAlign() test 11
+  it("Should return a flex container, with the content to right and bottom", () => {
+
+    let ast = css.parse(".a{bnn-align: right bottom;}");
+
+    ast.stylesheet.rules.forEach((rule) => {
+      if (rule.selectors) bnnAlign(rule.declarations);
+    });
+
+    let result = css.stringify(ast);
+    let expect = ".a {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: flex-end;\n  align-items: flex-end;\n}";
+
+    assert.equal(result, expect);
+  });
+
+  // bnnAlign() test 12
+  it("Should return a flex container, with the content to center and bottom", () => {
+
+    let ast = css.parse(".a{bnn-align: center bottom;}");
+
+    ast.stylesheet.rules.forEach((rule) => {
+      if (rule.selectors) bnnAlign(rule.declarations);
+    });
+
+    let result = css.stringify(ast);
+    let expect = ".a {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  align-items: flex-end;\n}";
+
+    assert.equal(result, expect);
+  });
+
+  // bnnAlign() test 13
+  it("Should return a flex container, with the content to right and center", () => {
+
+    let ast = css.parse(".a{bnn-align: right center;}");
+
+    ast.stylesheet.rules.forEach((rule) => {
+      if (rule.selectors) bnnAlign(rule.declarations);
+    });
+
+    let result = css.stringify(ast);
+    let expect = ".a {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: flex-end;\n  align-items: center;\n}";
+
+    assert.equal(result, expect);
+  });
+
+});
+
+```
+
+Fazendo isso já conseguimos chamar apenas esse teste com `mocha test/bnnAlign.test.js `:
+
+```
+(bananacss) ➜ (git:(master)) ➜ mocha test/bnnAlign.test.js
+
+
+  bnnAlign()
+    ✓ Should return a vertical and horizontal centralized flex container with one value
+    ✓ Should return a vertical and horizontal centralized flex container with two values
+    ✓ Should return a flex container aligned to left with one value
+    ✓ Should return a flex container aligned to right with one value
+    ✓ Should return a flex container, with the content to top with one value
+    ✓ Should return a flex container, with the content to bottom with one value
+    ✓ Should return a flex container, with the content to left and top
+    ✓ Should return a flex container, with the content to left and bottom
+    ✓ Should return a flex container, with the content to right and top
+    ✓ Should return a flex container, with the content to right and bottom
+    ✓ Should return a flex container, with the content to center and bottom
+    ✓ Should return a flex container, with the content to right and center
+
+
+  12 passing (25ms)
+
+```
+
+**Fácil não?**
+
+> É mas como que fica o arquivo de testes principal? Pois agora ele está sem aquele teste.
+
+**Baaaahhh isso é muito simples!**
+
+Como separamos o código e apenas precisamos executar ele podemos colocar apenas essa linha no local de **TODO AQUELE CÓDIGO**:
+
+```js
+require('./bnnAlign.test.js')
+```
+
+E agora podemos executar os testes como antes com `npm test` além de pode executar apenas 1 teste, bem melhor não?
+
+```
+
+(bananacss) ➜ (git:(master) ✗) ➜ npm test
+
+> bananacss@0.2.0 test /Users/jeancarlonascimento/www/testes/bananacss
+> mocha
+
+
+  bnnAlign()
+    ✓ Should return a vertical and horizontal centralized flex container with one value
+    ✓ Should return a vertical and horizontal centralized flex container with two values
+    ✓ Should return a flex container aligned to left with one value
+    ✓ Should return a flex container aligned to right with one value
+    ✓ Should return a flex container, with the content to top with one value
+    ✓ Should return a flex container, with the content to bottom with one value
+    ✓ Should return a flex container, with the content to left and top
+    ✓ Should return a flex container, with the content to left and bottom
+    ✓ Should return a flex container, with the content to right and top
+    ✓ Should return a flex container, with the content to right and bottom
+    ✓ Should return a flex container, with the content to center and bottom
+    ✓ Should return a flex container, with the content to right and center
+
+  render()
+    ✓ should return the fully rendered css
+
+  bnnSize()
+    ✓ Should return a width and height with one specific value.
+    ✓ Should return a width and height with two specific values.
+
+  bnnPosition()
+    ✓ Should return a top,right,bottom and left with four specific value.
+    ✓ Should return a top,right,bottom and left with one specific value.
+    ✓ If the value is center, should return a block centered element
+
+  bnnGradient()
+    ✓ Should return a gradient with two colors.
+    ✓ If the third value is vertical, should return a to bottom gradient.
+    ✓ If the third value is hotizontal, should return a to left gradient.
+
+  bnnImport()
+    ✓ Should return the modulo.bnn file imported into the main.bnn file
+
+  getParam()
+    ✓ Should return a specific value of a shorthand.
+    ✓ If dont exist the especific value, should return the first value of a shorthand.
+
+
+  24 passing (37ms)
+```
