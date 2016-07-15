@@ -6,4 +6,3 @@ require('./bnnPosition.test.js')
 require('./bnnGradient.test.js')
 require('./bnnImport.test.js')
 require('./getParam.test.js')
-

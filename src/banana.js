@@ -13,7 +13,7 @@ const Banana = (config) => {
         // Verifies that the rule is a import
         if (rule.import) {
           // Import the module
-          bnnImport(inputPath, rule.import, ast.stylesheet.rules, index);
+          config.bnnImport(inputPath, rule.import, ast.stylesheet.rules, index);
         }
       });
 

@@ -1,6 +1,6 @@
-const css  = require('css'),
-      fs   = require('fs'),
-      path = require('path');
+const css  = require('css');
+const fs   = require('fs');
+const path = require('path');
 
 var bnnImport = (inputPath, importPath, mainRules, index) => {
 

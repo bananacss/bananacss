@@ -1,5 +1,5 @@
 const assert = require('assert');
-const css    = require('css');
+const css = require('css');
 
 // ---------------------------------
 // bnnGradient()

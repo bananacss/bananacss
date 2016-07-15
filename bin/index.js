@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-const program  = require('commander'),
-      pkg      = require('../package.json'),
-      chokidar = require('chokidar'),
-      fsRender = require('./fsRender.js');
+const program  = require('commander');
+const pkg = require('../package.json');
+const chokidar = require('chokidar');
+const fsRender = require('./fsRender.js');
 
-let input_path,
-    output_path;
+let input_path;
+let output_path;
 
 // program configs
 program
