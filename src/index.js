@@ -7,5 +7,5 @@ config.bnnGradient = require('./bnnGradient.js'),
 config.bnnImport = require('./bnnImport.js'),
 config.bnnAlign = require('./bnnAlign.js');
 
-const Banana = require('./banana.js');
-Banana.run(config);
+const Banana = require('./banana.js')(config);
+console.log('Banana', Banana)

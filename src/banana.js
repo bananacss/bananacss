@@ -34,4 +34,4 @@ const Banana = (config) => {
   }
 }
 
-module.exports = { run: Banana };
+module.exports = Banana;
