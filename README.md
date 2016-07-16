@@ -1,6 +1,6 @@
 # Banana CSS
 
-> :banana: A brazilian css superset.
+> :banana: The brazilian CSS superset.
 
 [![Build Status](https://travis-ci.org/bananacss/bananacss.svg?branch=master)](https://travis-ci.org/bananacss/bananacss)
 [![Dependency Status](https://david-dm.org/bananacss/bananacss.svg)](https://david-dm.org/bananacss/bananacss)
@@ -19,6 +19,8 @@
   - [bnn-position](#bnn-position)
   - [bnn-gradient](#bnn-gradient)
   - [bnn-align](#bnn-align)
+- [Module Bundler](#module-bundler)
+  - [@import](#@import)
 - [Tests](#tests)
 - [Versioning](#versioning)
 - [Contributing](#contributing)
@@ -205,6 +207,42 @@ let output = banana.render(path);
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: flex-end;
+}
+```
+
+<hr>
+
+## Module Bundler
+
+### @import
+
+*Banana code:*
+
+```css
+/* module.bnn */
+.demo {
+  color: #000;
+}
+```
+
+```css
+/* style.bnn */
+@import module.bnn;
+
+.exemplo {
+  background: #fff;
+}
+```
+
+*Result:*
+```css
+/* style.css */
+.demo {
+  color: #000;
+}
+
+.exemplo {
+  background: #fff;
 }
 ```
 
