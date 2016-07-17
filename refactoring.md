@@ -475,7 +475,7 @@ const verticalValues = [
 ]
 ```
 
-Ok! Agora nós vamos **iterar** nesse *Array* para automatizar os testes que tinham antes ficando assim:
+Ok! Agora nós vamos **iterar** nesse *Array* para automatizar os testes que tinham antes, ficando assim:
 
 ```js
 const testHorizontal = (element, index) => {
