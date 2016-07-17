@@ -83,19 +83,18 @@ function Banana(config) {
 
 ```js
 const config = {};
-config.bnnSize = require('./bnnSize.js'),
-config.bnnPosition = require('./bnnPosition.js'),
-config.bnnGradient = require('./bnnGradient.js'),
-config.bnnImport = require('./bnnImport.js'),
-config.bnnAlign = require('./bnnAlign.js');
+config.bnnSize = require('./bnnSize.js')
+config.bnnPosition = require('./bnnPosition.js')
+config.bnnGradient = require('./bnnGradient.js')
+config.bnnImport = require('./bnnImport.js')
+config.bnnAlign = require('./bnnAlign.js')
 
-const Banana = require('./banana.js');
-Banana.run(config);
+const Banana = require('./banana.js')(config)
 ```
 
 Percebeu então que separamos o módulo que executa das suas configurações?
 
-Bom acredito que você percebeu essa função `run(config)` né?!
+Bom acredito que você percebeu que agora criamos o módulo `Banana`, **INJETANDO** a sua configuração por meio de `config`?
 
 Eu refatorei essa parte pois ela estava assim:
 
