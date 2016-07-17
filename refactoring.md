@@ -2,7 +2,7 @@
 
 ![Hora da refatoração](http://i.imgur.com/sb3ATGA.jpg)
 
-Vamo começar analisando o arquivo principal `src/banana.js`:
+Vamos começar analisando o arquivo principal `src/banana.js`:
 
 ```js
 'use strict';
