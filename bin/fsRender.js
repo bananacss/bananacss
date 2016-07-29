@@ -1,5 +1,5 @@
 const fs = require('fs');
-const bin = require('../bin/index.js');
+const bin = require('./index.js');
 
 // features injection
 const config = {};
@@ -9,7 +9,7 @@ config.bnnGradient = require('../src/bnnGradient.js'),
 config.bnnImport = require('../src/bnnImport.js'),
 config.bnnAlign = require('../src/bnnAlign.js');
 
-const Banana = require('./banana.js')(config);
+const Banana = require('../src/banana.js')(config);
 
 // Read, render and write
 let fsRender = (input, output) => {

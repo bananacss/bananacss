@@ -1,0 +1,17 @@
+.exemplo-1 {
+	bnn-size: 50px;
+	bnn-align: center;
+	bnn-gradient: #fff #000;
+}
+
+.exemplo-2 {
+	bnn-size: 50px 100%;
+	bnn-position: 10px;
+	bnn-gradient: #fff #000 horizontal;
+}
+
+.exemplo-3 {
+	bnn-size: 50px 100%;
+	bnn-position: 10px 5px 9px 40px;
+	bnn-gradient: #fff #000 vertical;
+}
