@@ -9,11 +9,11 @@ let bnnAlign = (declarations) => {
     if (declaration.property === "bnn-align") {
 
       // Delete a custom property
-      declarations.splice(index, 1)
+      declarations.splice(index, 1);
 
       //Filter values
-      const propertyHorizontal = getParam(declaration.value, 0)
-      const propertyVertical = getParam(declaration.value, 1)
+      const propertyHorizontal = getParam(declaration.value, 0);
+      const propertyVertical = getParam(declaration.value, 1);
 
       const horizontalValues = [
         { type: "left",
@@ -37,7 +37,7 @@ let bnnAlign = (declarations) => {
             value: propertyHorizontal
           }
         }
-      ]
+      ];
       const verticalValues = [
         { type: "top",
           declarations: {
@@ -60,7 +60,7 @@ let bnnAlign = (declarations) => {
             value: propertyVertical
           }
         }
-      ]
+      ];
       // Add properties and values
       declarations.push({
         type: 'declaration',
@@ -74,14 +74,18 @@ let bnnAlign = (declarations) => {
         value: "wrap"
       });
 
-      const testHorizontal = (element, index) => {
-        if (element.type === propertyHorizontal) declarations.push(element.declarations)
-      }
-      const testVertical = (element, index) => {
-        if (element.type === propertyVertical) declarations.push(element.declarations)
-      }
-      horizontalValues.forEach(testHorizontal)
-      verticalValues.forEach(testVertical)
+      const testHorizontal = (element) => {
+        if (element.type === propertyHorizontal) {
+          declarations.push(element.declarations);
+        }
+      };
+      const testVertical = (element) => {
+        if (element.type === propertyVertical) {
+          declarations.push(element.declarations);
+        }
+      };
+      horizontalValues.forEach(testHorizontal);
+      verticalValues.forEach(testVertical);
     }
   });
 

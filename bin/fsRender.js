@@ -1,5 +1,4 @@
 const fs = require('fs');
-const bin = require('./index.js');
 
 // features injection
 const config = {};
@@ -13,7 +12,6 @@ const Banana = require('../src/banana.js')(config);
 
 // Read, render and write
 let fsRender = (input, output) => {
-  console.log(input)
   // read the .bnn file
   let bnnStylesheet = fs.readFileSync(input, 'utf8');
   // render the .bnn file

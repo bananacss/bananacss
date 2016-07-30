@@ -1,6 +1,6 @@
 'use strict';
 
-const css = require('css')
+const css = require('css');
 
 const Banana = (config) => {
   return {
@@ -31,7 +31,7 @@ const Banana = (config) => {
       // Return the stringify AST
       return css.stringify(ast);
     }
-  }
-}
+  };
+};
 
 module.exports = Banana;
