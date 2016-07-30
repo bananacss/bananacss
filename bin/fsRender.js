@@ -13,10 +13,11 @@ const Banana = require('../src/banana.js')(config);
 
 // Read, render and write
 let fsRender = (input, output) => {
+  console.log(input)
   // read the .bnn file
   let bnnStylesheet = fs.readFileSync(input, 'utf8');
   // render the .bnn file
-  let cssStylesheet = Banana.render(bin.input_path , bnnStylesheet);
+  let cssStylesheet = Banana.render(input , bnnStylesheet);
   // convert the .bnn to .css and write the .css file
   fs.writeFile(output.toString().replace(/.bnn/g,".css"), cssStylesheet);
 };

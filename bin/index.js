@@ -55,6 +55,3 @@ if (program.watch && program.out) {
   console.log("Your file has been compiled");
 
 }
-
-// Export the input_path
-exports.inputPath = () => input_path;
