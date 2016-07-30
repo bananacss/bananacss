@@ -19,7 +19,7 @@ describe('bnnImport()', () => {
     });
 
     let result = css.stringify(ast);
-    let expect = ".a {\n  width: 500px;\n}\n\n.b {\n  color: #000;\n}";
+    let expect = ".b {\n  color: #000;\n}\n\n.a {\n  width: 500px;\n}";
 
     assert.equal(result, expect);
   });

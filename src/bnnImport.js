@@ -17,7 +17,7 @@ var bnnImport = (inputPath, importPath, mainRules, index) => {
 
   // Add module rules to mainsRules
   ast.stylesheet.rules.forEach((rule) => {
-    mainRules.push(rule);
+    mainRules.unshift(rule);
   });
 
 };
