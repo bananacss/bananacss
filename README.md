@@ -6,6 +6,7 @@
 [![Dependency Status](https://david-dm.org/bananacss/bananacss.svg)](https://david-dm.org/bananacss/bananacss)
 [![devDependency Status](https://david-dm.org/bananacss/bananacss/dev-status.svg)](https://david-dm.org/bananacss/bananacss#info=devDependencies)
 [![npm](https://img.shields.io/npm/v/bananacss.svg)](https://www.npmjs.com/package/bananacss)
+[![npm](https://img.shields.io/npm/dt/bananacss.svg)](https://www.npmjs.com/package/bananacss)
 
 ## Table of contents
 
@@ -21,6 +22,8 @@
   - [bnn-align](#bnn-align)
 - [Module Bundler](#module-bundler)
   - [@import](#@import)
+- [Variables](#variables)
+  - [Custom properties](#custom-properties)
 - [Tests](#tests)
 - [Versioning](#versioning)
 - [Contributing](#contributing)
@@ -248,6 +251,33 @@ let output = Banana.render("./fake_path.bnn", bnnCode);
 .demo {
   color: #000;
 }
+
+.exemplo {
+  background: #fff;
+}
+```
+<hr>
+
+## Variables
+
+### Custom properties
+
+*Banana code:*
+
+```css
+/* style.bnn */
+:root {
+  --x: #fff;
+}
+
+.exemplo {
+  background: var(--x);
+}
+```
+
+*Result:*
+```css
+/* style.css */
 
 .exemplo {
   background: #fff;

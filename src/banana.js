@@ -9,6 +9,7 @@ const Banana = (config) => {
       let ast = css.parse(stylesheet);
 
       // Search for import rules
+      // ---------------------------------
       ast.stylesheet.rules.forEach((rule, index) => {
         // Verifies that the rule is a import
         if (rule.import) {
@@ -17,7 +18,18 @@ const Banana = (config) => {
         }
       });
 
+      // Search for :root
+      // ---------------------------------
+      ast.stylesheet.rules.forEach((rule, index) => {
+        // Verifies that the selector is a :root
+        if (rule.selectors == ":root") {
+          // Compile the custom properties
+          bnnVariable(rule, ast.stylesheet.rules, index);
+        }
+      });
+
       // Search for selectors rules
+      // ---------------------------------
       ast.stylesheet.rules.forEach((rule) => {
         // Verifies that the rule is a selector
         if (rule.selectors) {
