@@ -25,10 +25,15 @@
     "css": "^2.2.1"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "cover": "istanbul cover _mocha -- ./test/* --recursive",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
   "devDependencies": {
+    "coveralls": "^2.11.12",
+    "istanbul": "^0.4.4",
     "jshint": "^2.8.0",
-    "mocha": "^3.0.0"
+    "mocha": "^3.0.0",
+    "mocha-lcov-reporter": "^1.2.0"
   }
 }

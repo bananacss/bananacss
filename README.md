@@ -294,6 +294,12 @@ let output = Banana.render("./fake_path.bnn", bnnCode);
 $ npm test
 ```
 
+### Calculate the coverage with Istanbul
+
+```sh
+$ npm run cover
+```
+
 <hr>
 
 ## Versioning
