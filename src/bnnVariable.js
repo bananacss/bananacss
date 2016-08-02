@@ -30,7 +30,7 @@ var bnnVariable = (rule, mainRules, index) => {
         // iterates customVars
         customVars.forEach((v, index) => {
           // verify if  var() value == custom property
-          if (declaration.value.replace(/var\(/, "").replace(/\)/, "") == customVars[index][0]) {
+          if (declaration.value.replace(/var\(/, "").replace(/\)/, "") === customVars[index][0]) {
             // change var() value for custom property
             declaration.value = customVars[index][1];
           }

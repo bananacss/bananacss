@@ -5,6 +5,7 @@ const config = {};
 config.bnnSize = require('../src/bnnSize.js'),
 config.bnnPosition = require('../src/bnnPosition.js'),
 config.bnnGradient = require('../src/bnnGradient.js'),
+config.bnnVariable = require('../src/bnnVariable.js'),
 config.bnnImport = require('../src/bnnImport.js'),
 config.bnnAlign = require('../src/bnnAlign.js');
 

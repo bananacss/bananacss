@@ -11,5 +11,6 @@ script:
   - "jshint src/bnnGradient.js"
   - "jshint src/bnnAlign.js"
   - "jshint src/bnnImport.js"
+  - "jshint src/bnnVariable.js"
   - "jshint src/index.js"
   - "npm test"

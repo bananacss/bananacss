@@ -1,6 +1,12 @@
 @import module.bnn;
 
+:root {
+	--x: #000;
+	--y: #fff;
+}
+
 .exemplo-1 {
+	color: var(--x);
 	bnn-size: 50px;
 	bnn-align: center;
 	bnn-gradient: #fff #000;
@@ -9,6 +15,7 @@
 .exemplo-2 {
 	bnn-size: 50px 100%;
 	bnn-position: 10px;
+	color: var(--y);
 	bnn-gradient: #fff #000 horizontal;
 }
 
