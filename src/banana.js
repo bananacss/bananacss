@@ -22,7 +22,7 @@ const Banana = (config) => {
       // ---------------------------------
       ast.stylesheet.rules.forEach((rule, index) => {
         // Verifies that the selector is a :root
-        if (rule.selectors === ":root") {
+        if (rule.selectors == ":root") {
           // Compile the custom properties
           config.bnnVariable(rule, ast.stylesheet.rules, index);
         }

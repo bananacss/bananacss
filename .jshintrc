@@ -6,7 +6,7 @@
   "boss": true,
   "undef": true,
   "unused": true,
-  "eqeqeq": true,
+  "eqeqeq": false,
   "indent": 2,
   "newcap": true,
   "curly": true
