@@ -2,17 +2,7 @@ language: node_js
 node_js:
   - stable
 script:
-  - "jshint bin/index.js"
-  - "jshint bin/fsRender.js"
-  - "jshint src/banana.js"
-  - "jshint src/getParam.js"
-  - "jshint src/bnnSize.js"
-  - "jshint src/bnnPosition.js"
-  - "jshint src/bnnGradient.js"
-  - "jshint src/bnnAlign.js"
-  - "jshint src/bnnImport.js"
-  - "jshint src/bnnVariable.js"
-  - "jshint src/index.js"
+  - "npm run eslint"
   - "npm test"
 after_success:
 - npm run coveralls

@@ -25,6 +25,7 @@
   - [@import](#@import)
 - [Variables](#variables)
   - [Custom properties](#custom-properties)
+- [Code Style](#code-style)
 - [Tests](#tests)
 - [Versioning](#versioning)
 - [Contributing](#contributing)
@@ -287,16 +288,25 @@ let output = Banana.render("./fake_path.bnn", bnnCode);
 
 <hr>
 
+## Code Style
+
+Follow the [Banana NodeJS style guide](https://github.com/bananacss/banana-style-guide).
+
+*Validate the code style with ESLint:*
+```sh
+$ npm run eslint
+```
+
+<hr>
+
 ## Tests
 
-### Run the unit tests
-
+*Run the unit tests with mocha:*
 ```sh
 $ npm test
 ```
 
-### Calculate the coverage with Istanbul
-
+*Calculate the coverage with Istanbul:*
 ```sh
 $ npm run cover
 ```
