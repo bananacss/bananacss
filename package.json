@@ -36,7 +36,7 @@
     "test": "mocha",
     "cover": "istanbul cover _mocha -- ./test/* --recursive",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
-    "eslint": "eslint **/*"
+    "eslint": "eslint src/* bin/* test/*"
   },
   "devDependencies": {
     "coveralls": "^2.11.12",

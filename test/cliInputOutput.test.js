@@ -6,15 +6,15 @@ describe('$ banana <input_path> -o <output_path>', () => {
 
   // Compile the .bnn file
   before((done) => {
-    exec('node bin/index.js test/fixtures/style.bnn -o test/fixtures/outputStyle.css', () => done());
+    const command = 'node bin/index.js test/fixtures/style.bnn -o' +
+      ' test/fixtures/outputStyle.css';
+
+    exec(command, () => done());
   });
 
   it('Should be return the compiled .CSS file with specific path', () => {
-    // Get the .css result
-    let result = fs.readFileSync("test/fixtures/outputStyle.css", 'utf8');
-
-    // Get the .css expect
-    let expect = fs.readFileSync("test/fixtures/expects/style.css", 'utf8');
+    const result = fs.readFileSync('test/fixtures/outputStyle.css', 'utf8');
+    const expect = fs.readFileSync('test/fixtures/expects/style.css', 'utf8');
 
     assert.equal(result, expect);
 
@@ -22,7 +22,7 @@ describe('$ banana <input_path> -o <output_path>', () => {
 
   // Delete the .css result
   after((done) => {
-    fs.unlink("test/fixtures/outputStyle.css");
+    fs.unlink('test/fixtures/outputStyle.css');
     done();
   });
 
