@@ -1,65 +1,66 @@
 const getParam = require('./getParam.js');
 
-let bnnPosition = (declarations) => {
+const bnnPosition = (declarations) => {
 
-  // Search for declarations
   declarations.forEach((declaration, index) => {
 
-    // Find a custom property
-    if (declaration.property === "bnn-position") {
+    if (declaration.property === 'bnn-position') {
 
-      // Delete a custom property
+      // Delete the custom property
       declarations.splice(index, 1);
 
-      //Filter values
-      let propertyValue1 = getParam(declaration.value, 0);
-      let propertyValue2 = getParam(declaration.value, 1);
-      let propertyValue3 = getParam(declaration.value, 2);
-      let propertyValue4 = getParam(declaration.value, 3);
+      const propertyValue1 = getParam(declaration.value, 0);
+      const propertyValue2 = getParam(declaration.value, 1);
+      const propertyValue3 = getParam(declaration.value, 2);
+      const propertyValue4 = getParam(declaration.value, 3);
 
-      //verify the property value
-      if (propertyValue1 === "center") {
+      if (propertyValue1 === 'center') {
 
-        // Add properties and values
+        // Add new declaration
         declarations.push({
           type: 'declaration',
           property: 'display',
-          value: "block"
+          value: 'block'
         });
 
+        // Add new declaration
         declarations.push({
           type: 'declaration',
           property: 'margin-left',
-          value: "auto"
+          value: 'auto'
         });
 
+        // Add new declaration
         declarations.push({
           type: 'declaration',
           property: 'margin-right',
-          value: "auto"
+          value: 'auto'
         });
 
       } else {
 
-        // Add properties and values
+        // Add new declaration
         declarations.push({
           type: 'declaration',
           property: 'top',
           value: propertyValue1
         });
 
+        // Add new declaration
         declarations.push({
           type: 'declaration',
           property: 'right',
           value: propertyValue2
         });
 
+        // Add new declaration
         declarations.push({
           type: 'declaration',
           property: 'bottom',
           value: propertyValue3
         });
 
+        // Add new declaration
         declarations.push({
           type: 'declaration',
           property: 'left',

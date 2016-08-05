@@ -1,33 +1,30 @@
 const getParam = require('./getParam.js');
 
-let bnnGradient = (declarations) => {
+const bnnGradient = (declarations) => {
 
-  // Search for declarations
   declarations.forEach((declaration, index) => {
 
-    // Find a custom property
-    if (declaration.property === "bnn-gradient") {
+    if (declaration.property === 'bnn-gradient') {
 
-      // Delete a custom property
+      // Delete the custom property
       declarations.splice(index, 1);
 
-      //Filter values
-      let color1 = getParam(declaration.value, 0);
-      let color2 = getParam(declaration.value, 1);
-      let orientation = getParam(declaration.value, 2);
+      const propertyColor1 = getParam(declaration.value, 0);
+      const propertyColor2 = getParam(declaration.value, 1);
+      const propertyDirection = getParam(declaration.value, 2);
 
-      //verify the property value
-      if (orientation === "horizontal") {
-        orientation = "to left, ";
-      } else {
-        orientation = "to bottom, ";
-      }
+      const Gradientdirection = (propertyDirection === 'horizontal')
+        ? 'to left, '
+        : 'to bottom, ';
 
-      // Add properties and values
+      const linearGradient = 'linear-gradient(' + Gradientdirection +
+        propertyColor1 + ', ' + propertyColor2 + ')';
+
+      // Add new declaration
       declarations.push({
         type: 'declaration',
         property: 'background-image',
-        value: "linear-gradient("+orientation+color1+", "+color2+")"
+        value: linearGradient
       });
 
     }

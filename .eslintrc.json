@@ -1,0 +1,46 @@
+{
+    "env": {
+        "es6": true,
+        "node": true,
+        "mocha": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "indent": [
+            "error",
+            2
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "eqeqeq": [
+            "error",
+            "always"
+        ],
+        "space-infix-ops": [
+            "error",
+            {"int32Hint": false}
+        ],
+        "max-len": [
+            "error",
+            80,
+            2
+        ],
+        "prefer-const": "error",
+        "no-const-assign": "error",
+        "no-var": "error",
+        "no-new-object": "error",
+        "no-array-constructor": "error",
+        "prefer-arrow-callback": "error",
+        "brace-style": "error"
+    }
+}

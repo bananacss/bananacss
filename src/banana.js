@@ -3,47 +3,42 @@
 const css = require('css');
 
 const Banana = (config) => {
+
   return {
     render: (inputPath, stylesheet) => {
-      // Create the AST Tree
-      let ast = css.parse(stylesheet);
 
-      // Search for import rules
-      // ---------------------------------
-      ast.stylesheet.rules.forEach((rule, index) => {
-        // Verifies that the rule is a import
+      const ast = css.parse(stylesheet);
+      const rules = ast.stylesheet.rules;
+
+      // Search for all the @import and generate a single AST
+      rules.forEach((rule, index) => {
         if (rule.import) {
-          // Import the module
-          config.bnnImport(inputPath, rule.import, ast.stylesheet.rules, index);
+          config.bnnImport(inputPath, rule.import, rules, index);
         }
       });
 
-      // Search for :root
-      // ---------------------------------
-      ast.stylesheet.rules.forEach((rule, index) => {
-        // Verifies that the selector is a :root
-        if (rule.selectors == ":root") {
-          // Compile the custom properties
-          config.bnnVariable(rule, ast.stylesheet.rules, index);
+      // Search for all global variables and compile
+      rules.forEach((rule, index) => {
+        if ('' + rule.selectors === ':root') {
+          config.bnnVariable(rule, rules, index);
         }
       });
 
-      // Search for selectors rules
-      // ---------------------------------
-      ast.stylesheet.rules.forEach((rule) => {
-        // Verifies that the rule is a selector
+      // Search for all custom properties and compile
+      rules.forEach((rule) => {
         if (rule.selectors) {
-          // Get custom declarations and create new declarations
           config.bnnSize(rule.declarations);
           config.bnnPosition(rule.declarations);
           config.bnnGradient(rule.declarations);
           config.bnnAlign(rule.declarations);
         }
       });
-      // Return the stringify AST
+
       return css.stringify(ast);
+
     }
   };
+
 };
 
 module.exports = Banana;

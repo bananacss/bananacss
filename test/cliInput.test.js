@@ -10,11 +10,8 @@ describe('$ banana <input_path>', () => {
   });
 
   it('Should be return the compiled .CSS file', () => {
-    // Get the .css result
-    let result = fs.readFileSync("test/fixtures/style.css", 'utf8');
-
-    // Get the .css expect
-    let expect = fs.readFileSync("test/fixtures/expects/style.css", 'utf8');
+    const result = fs.readFileSync('test/fixtures/style.css', 'utf8');
+    const expect = fs.readFileSync('test/fixtures/expects/style.css', 'utf8');
 
     assert.equal(result, expect);
 
@@ -22,7 +19,7 @@ describe('$ banana <input_path>', () => {
 
   // Delete the .css result
   after((done) => {
-    fs.unlink("test/fixtures/style.css");
+    fs.unlink('test/fixtures/style.css');
     done();
   });
 
