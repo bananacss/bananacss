@@ -1,45 +1,39 @@
-var bnnVariable = (rule, mainRules, index) => {
+const bnnVariable = (rule, mainRules, index) => {
 
-  // Save all custom properties
-  // ------------------------------
+  const customVars = [];
 
-  let customVars = [];
-
-  // Search for :root declarations
   rule.declarations.forEach((declaration, index) => {
-    // Save custom properties
-    customVars[index] = new Array(declaration.property, declaration.value);
+    // Save a custom property and values
+    customVars[index] = [declaration.property, declaration.value];
   });
 
-  // Delete :root
+  // Delete the :root selector
   mainRules.splice(index, 1);
 
-
-  // Replace all var()
-  // ------------------------------
-
-  // Search for all rules
+  // Find variables ans change for custom value
   mainRules.forEach((rule) => {
-
-    // Search for all declarations
     rule.declarations.forEach((declaration) => {
 
-      // verify if the declarations is a var()
-      if(/var\(/.test(declaration.value)) {
+      const isVariable = /var\(/.test(declaration.value);
 
-        // iterates customVars
+      if(isVariable) {
         customVars.forEach((v, index) => {
-          // verify if  var() value == custom property
-          if (declaration.value.replace(/var\(/, "").replace(/\)/, "") === customVars[index][0]) {
-            // change var() value for custom property
-            declaration.value = customVars[index][1];
-          }
-        });
 
+          const variableValue = declaration.value
+                                                .replace(/var\(/, '')
+                                                .replace(/\)/, '');
+
+          const customProperty = customVars[index][0];
+          const customValue = customVars[index][1];
+
+          if (variableValue === customProperty) {
+            declaration.value = customValue;
+          }
+
+        });
       }
 
     });
-
   });
 
 };

@@ -1,3 +1,5 @@
+/* eslint no-console: ["error", { allow: ["log"] }] */
+
 const fs = require('fs');
 
 // features injection
@@ -12,13 +14,17 @@ config.bnnAlign = require('../src/bnnAlign.js');
 const Banana = require('../src/banana.js')(config);
 
 // Read, render and write
-let fsRender = (input, output) => {
-  // read the .bnn file
-  let bnnStylesheet = fs.readFileSync(input, 'utf8');
-  // render the .bnn file
-  let cssStylesheet = Banana.render(input , bnnStylesheet);
-  // convert the .bnn to .css and write the .css file
-  fs.writeFile(output.toString().replace(/.bnn/g,".css"), cssStylesheet);
+const fsRender = (input, output, log = 'done') => {
+
+  const bnnStylesheet = fs.readFileSync(input, 'utf8');
+  const cssStylesheet = Banana.render(input , bnnStylesheet);
+
+  const bnnPath = output
+                      .toString()
+                      .replace(/.bnn/g,'.css');
+
+  fs.writeFile(bnnPath, cssStylesheet);
+  console.log(log);
 };
 
 module.exports = fsRender;

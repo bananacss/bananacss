@@ -1,31 +1,29 @@
 const getParam = require('./getParam.js');
 
-let bnnSize = (declarations) => {
+const bnnSize = (declarations) => {
 
-  // Search for declarations
   declarations.forEach((declaration, index) => {
 
-    // Find the custom property
-    if (declaration.property === "bnn-size") {
+    if (declaration.property === 'bnn-size') {
 
-      // Delete a custom property
+      // Delete the custom property
       declarations.splice(index, 1);
 
-      //Filter values
-      let propertyValue1 = getParam(declaration.value, 0);
-      let propertyValue2 = getParam(declaration.value, 1);
+      const propertyWidth = getParam(declaration.value, 0);
+      const propertyHeight = getParam(declaration.value, 1);
 
-      // Add properties and values
+      // Add new declaration
       declarations.push({
         type: 'declaration',
         property: 'width',
-        value: propertyValue1
+        value: propertyWidth
       });
 
+      // Add new declaration
       declarations.push({
         type: 'declaration',
         property: 'height',
-        value: propertyValue2
+        value: propertyHeight
       });
 
     }

@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* eslint no-console: ["error", { allow: ["log"] }] */
+
 const program  = require('commander');
 const pkg = require('../package.json');
 const chokidar = require('chokidar');
@@ -12,8 +14,8 @@ let output_path;
 program
   .version(pkg.version)
   .description(pkg.description)
-  .option('-o, --out', "output to <dir> when passing files")
-  .option('-w, --watch', "watch for changes")
+  .option('-o, --out', 'output to <dir> when passing files')
+  .option('-w, --watch', 'watch for changes')
   .arguments('<input_file> [output_file...]')
   .action((input_file, output_file = input_file) => {
     input_path  = input_file;
@@ -22,36 +24,24 @@ program
   .parse(process.argv);
 
 // execute the program with corresponding option
-if (program.watch && program.out) {
-  // $ banana <input_path> -o -w <output_path>
-  console.log("Watching for changes...");
+if (program.watch) {
+  // watch for changes
+  const watcher = chokidar.watch(input_path, {persistent: true});
+  console.log('Watching for changes...');
 
-  // watch
-  let watcher = chokidar.watch(input_path, {persistent: true});
-  watcher.on('change', (input_path) => {
-    fsRender(input_path, output_path);
-    console.log('File', input_path, 'has been changed');
-  });
-
-} else if (program.watch) {
-  // $ banana <input_path> -w
-  console.log("Watching for changes...");
-
-  // watch
-  let watcher = chokidar.watch(input_path, {persistent: true});
   watcher.on('change', (input_path) => {
     fsRender(input_path, input_path);
-    console.log('File', input_path, 'has been changed');
   });
+} else if (program.watch && program.out) {
+  // watch for changes
+  const watcher = chokidar.watch(input_path, {persistent: true});
+  console.log('Watching for changes...');
 
+  watcher.on('change', (input_path) => {
+    fsRender(input_path, output_path, 'File' + input_path + 'has been changed');
+  });
 } else if (program.out) {
-  // $ banana <input_path> -o <output_path>
-  fsRender(input_path, output_path);
-  console.log("Your file has been compiled");
-
+  fsRender(input_path, output_path, 'Your file has been compiled');
 } else {
-  // $ banana <input_path>
-  fsRender(input_path, input_path);
-  console.log("Your file has been compiled");
-
+  fsRender(input_path, input_path, 'Your file has been compiled');
 }

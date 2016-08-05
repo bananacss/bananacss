@@ -1,36 +1,33 @@
 const getParam = require('./getParam.js');
 
-let bnnAlign = (declarations) => {
+const bnnAlign = (declarations) => {
 
-  // Search for declarations
   declarations.forEach((declaration, index) => {
 
-    // Find a custom property
-    if (declaration.property === "bnn-align") {
+    if (declaration.property === 'bnn-align') {
 
       // Delete a custom property
       declarations.splice(index, 1);
 
-      //Filter values
       const propertyHorizontal = getParam(declaration.value, 0);
       const propertyVertical = getParam(declaration.value, 1);
 
       const horizontalValues = [
-        { type: "left",
+        { type: 'left',
           declarations: {
             type: 'declaration',
             property: 'justify-content',
             value: 'flex-start'
           }
         },
-        { type: "right",
+        { type: 'right',
           declarations: {
             type: 'declaration',
             property: 'justify-content',
             value: 'flex-end'
           }
         },
-        { type: "center",
+        { type: 'center',
           declarations: {
             type: 'declaration',
             property: 'justify-content',
@@ -38,22 +35,23 @@ let bnnAlign = (declarations) => {
           }
         }
       ];
+
       const verticalValues = [
-        { type: "top",
+        { type: 'top',
           declarations: {
             type: 'declaration',
             property: 'align-items',
             value: 'flex-start'
           }
         },
-        { type: "bottom",
+        { type: 'bottom',
           declarations: {
             type: 'declaration',
             property: 'align-items',
             value: 'flex-end'
           }
         },
-        { type: "center",
+        { type: 'center',
           declarations: {
             type: 'declaration',
             property: 'align-items',
@@ -61,17 +59,19 @@ let bnnAlign = (declarations) => {
           }
         }
       ];
-      // Add properties and values
+
+      // Add new declaration
       declarations.push({
         type: 'declaration',
         property: 'display',
-        value: "flex"
+        value: 'flex'
       });
 
+      // Add new declaration
       declarations.push({
         type: 'declaration',
         property: 'flex-wrap',
-        value: "wrap"
+        value: 'wrap'
       });
 
       const testHorizontal = (element) => {
@@ -79,13 +79,16 @@ let bnnAlign = (declarations) => {
           declarations.push(element.declarations);
         }
       };
+
       const testVertical = (element) => {
         if (element.type === propertyVertical) {
           declarations.push(element.declarations);
         }
       };
+
       horizontalValues.forEach(testHorizontal);
       verticalValues.forEach(testVertical);
+
     }
   });
 

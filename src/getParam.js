@@ -1,11 +1,11 @@
-let getParam = (declarationValue, paramPosition) => {
+const getParam = (declarationValue, paramPosition) => {
 
-  let declarationValueArray = declarationValue.split(" ");
+  const declarationValues = declarationValue.split(' ');
 
-  if (declarationValueArray[paramPosition]) {
-    return declarationValueArray[paramPosition];
+  if (declarationValues[paramPosition]) {
+    return declarationValues[paramPosition];
   } else {
-    return declarationValueArray[0];
+    return declarationValues[0];
   }
 
 };

@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 // features injection
 // const config = {};
