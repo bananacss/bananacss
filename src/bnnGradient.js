@@ -1,4 +1,6 @@
 const getParam = require('./getParam.js');
+const addProperty = require('./addProperty.js');
+const removeProperty = require('./removeProperty.js');
 
 const bnnGradient = (declarations) => {
 
@@ -6,8 +8,7 @@ const bnnGradient = (declarations) => {
 
     if (declaration.property === 'bnn-gradient') {
 
-      // Delete the custom property
-      declarations.splice(index, 1);
+      removeProperty(declarations, index);
 
       const propertyColor1 = getParam(declaration.value, 0);
       const propertyColor2 = getParam(declaration.value, 1);
@@ -20,12 +21,7 @@ const bnnGradient = (declarations) => {
       const linearGradient = 'linear-gradient(' + Gradientdirection +
         propertyColor1 + ', ' + propertyColor2 + ')';
 
-      // Add new declaration
-      declarations.push({
-        type: 'declaration',
-        property: 'background-image',
-        value: linearGradient
-      });
+      addProperty(declarations, index, 'background-image', linearGradient);
 
     }
 

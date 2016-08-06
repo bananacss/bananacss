@@ -1,4 +1,6 @@
 const getParam = require('./getParam.js');
+const addProperty = require('./addProperty.js');
+const removeProperty = require('./removeProperty.js');
 
 const bnnPosition = (declarations) => {
 
@@ -6,8 +8,7 @@ const bnnPosition = (declarations) => {
 
     if (declaration.property === 'bnn-position') {
 
-      // Delete the custom property
-      declarations.splice(index, 1);
+      removeProperty(declarations, index);
 
       const propertyValue1 = getParam(declaration.value, 0);
       const propertyValue2 = getParam(declaration.value, 1);
@@ -15,58 +16,14 @@ const bnnPosition = (declarations) => {
       const propertyValue4 = getParam(declaration.value, 3);
 
       if (propertyValue1 === 'center') {
-
-        // Add new declaration
-        declarations.push({
-          type: 'declaration',
-          property: 'display',
-          value: 'block'
-        });
-
-        // Add new declaration
-        declarations.push({
-          type: 'declaration',
-          property: 'margin-left',
-          value: 'auto'
-        });
-
-        // Add new declaration
-        declarations.push({
-          type: 'declaration',
-          property: 'margin-right',
-          value: 'auto'
-        });
-
+        addProperty(declarations, index, 'margin-right', 'auto');
+        addProperty(declarations, index, 'margin-left', 'auto');
+        addProperty(declarations, index, 'display', 'block');
       } else {
-
-        // Add new declaration
-        declarations.push({
-          type: 'declaration',
-          property: 'top',
-          value: propertyValue1
-        });
-
-        // Add new declaration
-        declarations.push({
-          type: 'declaration',
-          property: 'right',
-          value: propertyValue2
-        });
-
-        // Add new declaration
-        declarations.push({
-          type: 'declaration',
-          property: 'bottom',
-          value: propertyValue3
-        });
-
-        // Add new declaration
-        declarations.push({
-          type: 'declaration',
-          property: 'left',
-          value: propertyValue4
-        });
-
+        addProperty(declarations, index, 'left', propertyValue4);
+        addProperty(declarations, index, 'bottom', propertyValue3);
+        addProperty(declarations, index, 'right', propertyValue2);
+        addProperty(declarations, index, 'top', propertyValue1);
       }
 
     }

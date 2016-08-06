@@ -19,8 +19,9 @@ describe('render()', () => {
     const result = banana.render('teste.bnn', stylesheet);
 
     const expect = '.a {\n  color: #000;\n  width: 50px;\n' +
-      '  height: 100px;\n}\n\n.b {\n  color: #000;\n  margin: 10px;\n' +
-      '  top: 10px;\n  right: 5px;\n  bottom: 8px;\n  left: 90px;\n}';
+      '  height: 100px;\n}\n\n.b {\n  color: #000;\n' +
+      '  top: 10px;\n  right: 5px;\n  bottom: 8px;\n' +
+      '  left: 90px;\n  margin: 10px;\n}';
 
     assert.equal(result, expect);
   });

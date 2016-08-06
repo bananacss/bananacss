@@ -1,4 +1,6 @@
 const getParam = require('./getParam.js');
+const addProperty = require('./addProperty.js');
+const removeProperty = require('./removeProperty.js');
 
 const bnnSize = (declarations) => {
 
@@ -6,31 +8,18 @@ const bnnSize = (declarations) => {
 
     if (declaration.property === 'bnn-size') {
 
-      // Delete the custom property
-      declarations.splice(index, 1);
+      removeProperty(declarations, index);
 
       const propertyWidth = getParam(declaration.value, 0);
       const propertyHeight = getParam(declaration.value, 1);
 
-      // Add new declaration
-      declarations.push({
-        type: 'declaration',
-        property: 'width',
-        value: propertyWidth
-      });
-
-      // Add new declaration
-      declarations.push({
-        type: 'declaration',
-        property: 'height',
-        value: propertyHeight
-      });
+      addProperty(declarations, index, 'height', propertyHeight);
+      addProperty(declarations, index, 'width', propertyWidth);
 
     }
 
   });
 
 };
-
 
 module.exports = bnnSize;
