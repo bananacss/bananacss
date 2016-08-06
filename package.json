@@ -33,7 +33,7 @@
     "css": "^2.2.1"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "mocha test/index.js",
     "cover": "istanbul cover _mocha -- ./test/* --recursive",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "eslint": "eslint src/* bin/* test/*"
