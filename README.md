@@ -21,6 +21,8 @@
   - [bnn-position](#bnn-position)
   - [bnn-gradient](#bnn-gradient)
   - [bnn-align](#bnn-align)
+  - [bnn-width](#bnn-width)
+  - [bnn-height](#bnn-height)
 - [Module Bundler](#module-bundler)
   - [@import](#@import)
 - [Variables](#variables)
@@ -220,6 +222,48 @@ let output = Banana.render("./fake_path.bnn", bnnCode);
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: flex-end;
+}
+```
+
+<hr>
+
+### bnn-width
+
+*Banana code:*
+```css
+/* style.bnn */
+.demo {
+  bnn-width: 300px;
+}
+```
+
+*Result:*
+```css
+/* style.css */
+.demo {
+  width: 100%;
+  max-width: 300px;
+}
+```
+
+<hr>
+
+### bnn-height
+
+*Banana code:*
+```css
+/* style.bnn */
+.demo {
+  bnn-height: 300px;
+}
+```
+
+*Result:*
+```css
+/* style.css */
+.demo {
+  height: 100%;
+  max-height: 300px;
 }
 ```
 

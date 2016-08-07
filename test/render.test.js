@@ -6,6 +6,8 @@ config.bnnPosition = require('../src/bnnPosition.js'),
 config.bnnGradient = require('../src/bnnGradient.js'),
 config.bnnImport = require('../src/bnnImport.js'),
 config.bnnAlign = require('../src/bnnAlign.js');
+config.bnnWidth = require('../src/bnnWidth.js');
+config.bnnHeight = require('../src/bnnHeight.js');
 
 const banana = require('../src/banana.js')(config);
 

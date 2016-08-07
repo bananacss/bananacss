@@ -31,6 +31,8 @@ const Banana = (config) => {
           config.bnnPosition(rule.declarations);
           config.bnnGradient(rule.declarations);
           config.bnnAlign(rule.declarations);
+          config.bnnWidth(rule.declarations);
+          config.bnnHeight(rule.declarations);
         }
       });
 
