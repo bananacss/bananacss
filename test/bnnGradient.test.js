@@ -1,6 +1,6 @@
 const assert = require('assert');
 const css = require('css');
-const bnnGradient = require('../src/bnnGradient.js');
+const bnnGradient = require('../src/core/bnnGradient.js');
 
 describe('bnnGradient()', () => {
 

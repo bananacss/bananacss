@@ -1,5 +1,5 @@
 const assert = require('assert');
-const getParam = require('../src/getParam.js');
+const getParam = require('../src/helpers/getParam.js');
 
 describe('getParam()', () => {
 

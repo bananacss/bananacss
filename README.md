@@ -1,6 +1,6 @@
 # Banana CSS
 
-> :banana: The brazilian CSS superset.
+> :banana: The Brazilian CSS superset.
 
 [![Build Status](https://travis-ci.org/bananacss/bananacss.svg?branch=master)](https://travis-ci.org/bananacss/bananacss)
 [![Coverage Status](https://coveralls.io/repos/github/bananacss/bananacss/badge.svg?branch=master)](https://coveralls.io/github/bananacss/bananacss?branch=master)
@@ -27,10 +27,12 @@
   - [@import](#@import)
 - [Variables](#variables)
   - [Custom properties](#custom-properties)
-- [Code Style](#code-style)
-- [Tests](#tests)
-- [Versioning](#versioning)
-- [Contributing](#contributing)
+- [Development](#development)
+  - [Code Style](#code-style)
+  - [Code Docs](#code-docs)
+  - [Tests](#tests)
+  - [Versioning](#versioning)
+  - [Contributing](#contributing)
 - [History](#history)
 - [License](#license)
 
@@ -332,7 +334,12 @@ let output = Banana.render("./fake_path.bnn", bnnCode);
 
 <hr>
 
-## Code Style
+## Development
+
+- [Banana NodeJS style guide](https://github.com/bananacss/banana-style-guide)
+- [Banana NodeJS code docs](https://bananacss.github.io/bananacss)
+
+### Code Style
 
 Follow the [Banana NodeJS style guide](https://github.com/bananacss/banana-style-guide).
 
@@ -343,7 +350,23 @@ $ npm run eslint
 
 <hr>
 
-## Tests
+### Code Docs
+
+*Generate code docs with jsdocs*
+```sh
+$ npm run jsdocs
+```
+
+View code docs in `docs/index.html`
+
+*Publish the docs website on gh-pages:*
+```sh
+$ npm run publish jsdocs
+```
+
+<hr>
+
+### Tests
 
 *Run the unit tests with mocha:*
 ```sh
@@ -357,11 +380,11 @@ $ npm run cover
 
 <hr>
 
-## Versioning
+### Versioning
 
 To keep better organization of releases we follow the [Semantic Versioning 2.0.0](http://semver.org/) guidelines.
 
-## Contributing
+### Contributing
 
 Find on our [issues](https://github.com/bananacss/bananacss/issues/) the next steps of the project ;)
 <br>

@@ -10,7 +10,25 @@ $ git checkout -b my-new-feature
 ```
 *4 - Write your feature unit tests*
 
-*5 - Create your feature following the [code style](https://github.com/bananacss/bananacss#code-style) rules (Valid your code with ESLint):*
+*5 - Create your feature following the [code style](https://github.com/bananacss/bananacss#code-style) rules (Valid your code with ESLint) and document with [jsdocs](http://usejsdoc.org/index.html) syntax:*
+
+Module documented with jsdocs example:
+
+```js
+/**
+ * Module description
+ * @module moduleName
+ * @param {string} paramName - Param description
+ */
+const moduleName = (param) => {
+  console.log(param)
+};
+
+module.exports = moduleName;
+```
+
+*Validate with eslint*
+
 ```sh
 $ npm run eslint
 ```

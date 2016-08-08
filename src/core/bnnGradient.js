@@ -1,7 +1,13 @@
-const getParam = require('./getParam.js');
-const addProperty = require('./addProperty.js');
-const removeProperty = require('./removeProperty.js');
+const getParam = require('../helpers/getParam.js');
+const addProperty = require('../helpers/addProperty.js');
+const removeProperty = require('../helpers/removeProperty.js');
 
+/**
+ * Compile the bnn-gradient property values
+ * into background-image: linear-gradient();.
+ * @module src/core/bnnGradient
+ * @param {array} declarations - Declarations list for a single CSS rule (AST)
+ */
 const bnnGradient = (declarations) => {
 
   declarations.forEach((declaration, index) => {

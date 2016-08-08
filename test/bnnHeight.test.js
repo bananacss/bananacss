@@ -1,6 +1,6 @@
 const assert = require('assert');
 const css = require('css');
-const bnnHeight = require('../src/bnnHeight.js');
+const bnnHeight = require('../src/core/bnnHeight.js');
 
 describe('bnnHeight()', () => {
 
