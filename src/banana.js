@@ -24,26 +24,50 @@ const Banana = (config) => {
       // Search for all the @import and generate a single AST
       rules.forEach((rule, index) => {
         if (rule.import) {
-          config.bnnImport(inputPath, rule.import, rules, index);
+          if (config.bnnImport) {
+            const bnnImport = require('../src/core/bnnImport.js');
+            bnnImport(inputPath, rule.import, rules, index);
+          }
         }
       });
 
       // Search for all global variables and compile
       rules.forEach((rule, index) => {
         if ('' + rule.selectors === ':root') {
-          config.bnnVariable(rule, rules, index);
+          if (config.bnnVariable) {
+            require('../src/core/bnnVariable.js')(rule, rules, index);
+          }
         }
       });
 
-      // Search for all custom properties and compile
+      // Search for all banana properties and compile
       rules.forEach((rule) => {
         if (rule.selectors) {
-          config.bnnSize(rule.declarations);
-          config.bnnPosition(rule.declarations);
-          config.bnnGradient(rule.declarations);
-          config.bnnAlign(rule.declarations);
-          config.bnnWidth(rule.declarations);
-          config.bnnHeight(rule.declarations);
+
+          if (config.bnnSize) {
+            require('../src/core/bnnSize.js')(rule.declarations);
+          }
+
+          if (config.bnnPosition) {
+            require('../src/core/bnnPosition.js')(rule.declarations);
+          }
+
+          if (config.bnnGradient) {
+            require('../src/core/bnnGradient.js')(rule.declarations);
+          }
+
+          if (config.bnnAlign) {
+            require('../src/core/bnnAlign.js')(rule.declarations);
+          }
+
+          if (config.bnnWidth) {
+            require('../src/core/bnnWidth.js')(rule.declarations);
+          }
+
+          if (config.bnnHeight) {
+            require('../src/core/bnnHeight.js')(rule.declarations);
+          }
+
         }
       });
 

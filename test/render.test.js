@@ -1,13 +1,14 @@
 const assert = require('assert');
 
 const config = {};
-config.bnnSize = require('../src/core/bnnSize.js'),
-config.bnnPosition = require('../src/core/bnnPosition.js'),
-config.bnnGradient = require('../src/core/bnnGradient.js'),
-config.bnnImport = require('../src/core/bnnImport.js'),
-config.bnnAlign = require('../src/core/bnnAlign.js');
-config.bnnWidth = require('../src/core/bnnWidth.js');
-config.bnnHeight = require('../src/core/bnnHeight.js');
+config.bnnSize = true;
+config.bnnPosition = true;
+config.bnnGradient = true;
+config.bnnVariable = true;
+config.bnnImport = true;
+config.bnnAlign = true;
+config.bnnWidth = true;
+config.bnnHeight = true;
 
 const banana = require('../src/banana.js')(config);
 

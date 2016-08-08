@@ -82,19 +82,25 @@ $ banana --help
 ## Module Usage
 
 ```js
-const bnnCode = '.a {bnn-size: 50px;}';
+const inputBananaCode = '.a {bnn-size: 50px;}';
 
-// features injection
+// Features injection
 const config = {};
-config.bnnSize = require('./bnnSize.js'),
-config.bnnPosition = require('./bnnPosition.js'),
-config.bnnGradient = require('./bnnGradient.js'),
-config.bnnAlign = require('./bnnAlign.js');
+config.bnnSize = true; // Default: false
+config.bnnPosition = true; // Default: false
+config.bnnGradient = true; // Default: false
+config.bnnVariable = true; // Default: false
+config.bnnImport = true; // Default: false
+config.bnnAlign = true; // Default: false
+config.bnnWidth = true; // Default: false
+config.bnnHeight = true; // Default: false
 
 const Banana = require('banana')(config);
 
-/* Output the css. */
-let output = Banana.render("./fake_path.bnn", bnnCode);
+// Output the css
+const output = Banana.render("./fake_path.bnn", inputBananaCode);
+
+console.log(output); // .a {width: 50px; height: 50px;}
 ```
 
 <hr>
