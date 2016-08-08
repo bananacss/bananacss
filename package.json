@@ -38,8 +38,7 @@
     "cover": "istanbul cover _mocha -- ./test/* --recursive",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "eslint": "eslint src/* src/core/* src/helpers/* bin/* test/*",
-    "jsdocs": "jsdoc bin/*.js src/*.js",
-    "publish jsdocs": "git push origin `git subtree split --prefix out master`:gh-pages --force"
+    "jsdocs": "jsdoc bin/*.js src/*.js src/core/*.js src/helpers/*.js"
   },
   "devDependencies": {
     "coveralls": "^2.11.12",
