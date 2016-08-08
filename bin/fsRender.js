@@ -15,7 +15,13 @@ config.bnnHeight = require('../src/bnnHeight.js');
 
 const Banana = require('../src/banana.js')(config);
 
-// Read, render and write
+/**
+ * Read the file a .bnn file, render and write a .css file.
+ * @module bin/fsRender
+ * @param {string} inputPath - Input path for read a .bnn file
+ * @param {string} outputPath - Output path for write a .css file
+ * @param {string} log - Log for user feedback in terminal
+ */
 const fsRender = (inputPath, outputPath, log = 'Your file has been' +
   ' compiled') => {
 

@@ -2,6 +2,11 @@ const getParam = require('./getParam.js');
 const addProperty = require('./addProperty.js');
 const removeProperty = require('./removeProperty.js');
 
+/**
+ * Compile the bnn-height property values into height and max-height.
+ * @module src/bnnHeight
+ * @param {array} declarations - Declarations list for a single CSS rule (AST)
+ */
 const bnnHeight = (declarations) => {
 
   declarations.forEach((declaration, index) => {

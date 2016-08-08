@@ -8,7 +8,13 @@ const watcherFsRender = require('./watcherFsRender');
 let inputPath;
 let outputPath;
 
-// program configs
+/**
+ * CLI program options, arguments and actions.
+ * @name CLI
+ * @see commander
+ * @see bin/fsRender
+ * @see bin/watcherFsRender
+ */
 program
   .version(pkg.version)
   .description(pkg.description)

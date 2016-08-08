@@ -2,8 +2,19 @@
 
 const css = require('css');
 
+/**
+ * Get config for dependecies injectio and run all bnn modules
+ * @module src/banana
+ * @param {object} config - Modules for dependecies injection
+ */
 const Banana = (config) => {
 
+  /**
+   * Iteration in AST and run all modules
+   * @method render
+   * @param {string} inputPath - input file path
+   * @param {array} stylesheet - AST stylesheet
+   */
   return {
     render: (inputPath, stylesheet) => {
 
