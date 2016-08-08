@@ -1,6 +1,6 @@
 const assert = require('assert');
 const css = require('css');
-const bnnVariable = require('../src/bnnVariable.js');
+const bnnVariable = require('../src/core/bnnVariable.js');
 
 describe('bnnVariable()', () => {
 

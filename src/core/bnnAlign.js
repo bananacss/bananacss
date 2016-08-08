@@ -1,10 +1,10 @@
-const getParam = require('./getParam.js');
-const addProperty = require('./addProperty.js');
-const removeProperty = require('./removeProperty.js');
+const getParam = require('../helpers/getParam.js');
+const addProperty = require('../helpers/addProperty.js');
+const removeProperty = require('../helpers/removeProperty.js');
 
 /**
  * Compile the bnn-align property values into flex align.
- * @module src/bnnAlign
+ * @module src/core/bnnAlign
  * @param {array} declarations - Declarations list for a single CSS rule (AST)
  */
 const bnnAlign = (declarations) => {

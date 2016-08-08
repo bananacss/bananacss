@@ -1,6 +1,6 @@
 const assert = require('assert');
 const css = require('css');
-const bnnImport = require('../src/bnnImport.js');
+const bnnImport = require('../src/core/bnnImport.js');
 
 describe('bnnImport()', () => {
 

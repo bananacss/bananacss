@@ -4,14 +4,14 @@ const fs = require('fs');
 
 // features injection
 const config = {};
-config.bnnSize = require('../src/bnnSize.js');
-config.bnnPosition = require('../src/bnnPosition.js');
-config.bnnGradient = require('../src/bnnGradient.js');
-config.bnnVariable = require('../src/bnnVariable.js');
-config.bnnImport = require('../src/bnnImport.js');
-config.bnnAlign = require('../src/bnnAlign.js');
-config.bnnWidth = require('../src/bnnWidth.js');
-config.bnnHeight = require('../src/bnnHeight.js');
+config.bnnSize = require('../src/core/bnnSize.js');
+config.bnnPosition = require('../src/core/bnnPosition.js');
+config.bnnGradient = require('../src/core/bnnGradient.js');
+config.bnnVariable = require('../src/core/bnnVariable.js');
+config.bnnImport = require('../src/core/bnnImport.js');
+config.bnnAlign = require('../src/core/bnnAlign.js');
+config.bnnWidth = require('../src/core/bnnWidth.js');
+config.bnnHeight = require('../src/core/bnnHeight.js');
 
 const Banana = require('../src/banana.js')(config);
 

@@ -1,6 +1,6 @@
 const assert = require('assert');
 const css = require('css');
-const addProperty = require('../src/addProperty.js');
+const addProperty = require('../src/helpers/addProperty.js');
 
 describe('addProperty()', () => {
 

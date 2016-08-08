@@ -1,6 +1,6 @@
 /**
  * Remove a property in specific position in the declarations list.
- * @module src/removeProperty
+ * @module src/helpers/removeProperty
  * @param {array} declarations - Declarations list for a single CSS rule (AST)
  * @param {number} index - Declaration position for remove from declarations
  */

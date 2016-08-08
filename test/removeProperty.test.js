@@ -1,6 +1,6 @@
 const assert = require('assert');
 const css = require('css');
-const removeProperty = require('../src/removeProperty.js');
+const removeProperty = require('../src/helpers/removeProperty.js');
 
 describe('removeProperty()', () => {
 

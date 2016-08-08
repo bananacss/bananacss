@@ -1,6 +1,6 @@
 /**
  * Get custom properties values and add to corresponding var().
- * @module src/bnnVariable
+ * @module src/core/bnnVariable
  * @param {array} rule - :root rule
  * @param {array} mainRule - Rules list for a CSS (AST)
  * @param {number} index - :root seletor position in mains AST array

@@ -4,7 +4,7 @@ const path = require('path');
 
 /**
  * Get a module (@import) and add to mains bnn file (AST).
- * @module src/bnnImport
+ * @module src/core/bnnImport
  * @param {string} inputPath - Main file path
  * @param {string} importPath - Module file path
  * @param {array} mainRules - Rules list for a CSS (AST)

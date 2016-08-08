@@ -1,6 +1,6 @@
 const assert = require('assert');
 const css = require('css');
-const bnnPosition = require('../src/bnnPosition.js');
+const bnnPosition = require('../src/core/bnnPosition.js');
 
 describe('bnnPosition()', () => {
 

@@ -1,6 +1,6 @@
 const assert = require('assert');
 const css = require('css');
-const bnnAlign = require('../src/bnnAlign.js');
+const bnnAlign = require('../src/core/bnnAlign.js');
 
 describe('bnnAlign()', () => {
 

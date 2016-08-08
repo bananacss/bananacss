@@ -1,6 +1,6 @@
 /**
  * Add a property in specific position in the declarations list.
- * @module src/addProperty
+ * @module src/helpers/addProperty
  * @param {array} declarations - Declarations list for a single CSS rule (AST)
  * @param {number} index - Position for include the declaration on deaclarations
  * @param {string} propertyName - Property name for include

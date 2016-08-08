@@ -1,6 +1,6 @@
 # Banana CSS
 
-> :banana: The brazilian CSS superset.
+> :banana: The Brazilian CSS superset.
 
 [![Build Status](https://travis-ci.org/bananacss/bananacss.svg?branch=master)](https://travis-ci.org/bananacss/bananacss)
 [![Coverage Status](https://coveralls.io/repos/github/bananacss/bananacss/badge.svg?branch=master)](https://coveralls.io/github/bananacss/bananacss?branch=master)
@@ -337,7 +337,7 @@ let output = Banana.render("./fake_path.bnn", bnnCode);
 ## Development
 
 - [Banana NodeJS style guide](https://github.com/bananacss/banana-style-guide)
-- [Banana Nodejs code docs](https://bananacss.github.io/bananacss)
+- [Banana NodeJS code docs](https://bananacss.github.io/bananacss)
 
 ### Code Style
 

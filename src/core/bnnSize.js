@@ -1,10 +1,10 @@
-const getParam = require('./getParam.js');
-const addProperty = require('./addProperty.js');
-const removeProperty = require('./removeProperty.js');
+const getParam = require('../helpers/getParam.js');
+const addProperty = require('../helpers/addProperty.js');
+const removeProperty = require('../helpers/removeProperty.js');
 
 /**
  * Compile the bnn-size property values into width and height.
- * @module src/bnnSize
+ * @module src/core/bnnSize
  * @param {array} declarations - Declarations list for a single CSS rule (AST)
  */
 const bnnSize = (declarations) => {
