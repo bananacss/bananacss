@@ -181,7 +181,7 @@
 
 ```css
 /* style.bnn */
-@import module.bnn;
+@import "module.bnn";
 
 .exemplo {
   background: #fff;

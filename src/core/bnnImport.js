@@ -17,12 +17,14 @@ const bnnImport = (inputPath, importPath, mainRules, index) => {
 
   // Resolve path
   const basePath = path.dirname(inputPath);
-  const resolvedPath = path.resolve(basePath + '/' + importPath);
+  const importPathClean = importPath
+                                  .replace(/\"/g, '')
+                                  .replace(/\'/g, '');
+  const resolvedPath = path.resolve(basePath + '/' + importPathClean);
 
   const bnnModule = fs.readFileSync(resolvedPath, 'utf8');
   const ast = css.parse(bnnModule);
 
-  // Add module rules to mainsRules
   ast.stylesheet.rules.forEach((rule) => {
     mainRules.splice(index, 0, rule);
   });
