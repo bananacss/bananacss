@@ -71,7 +71,7 @@ const Banana = (config) => {
         }
       });
 
-      return css.stringify(ast);
+      return css.stringify(ast, {compress: config.compress});
 
     }
   };

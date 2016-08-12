@@ -94,6 +94,7 @@ config.bnnImport = true; // Default: false
 config.bnnAlign = true; // Default: false
 config.bnnWidth = true; // Default: false
 config.bnnHeight = true; // Default: false
+config.compress = true; // Default: false
 
 const Banana = require('banana')(config);
 
@@ -115,6 +116,7 @@ console.log(output); // .a {width: 50px; height: 50px;}
 - [bnn-height](docs/features-docs.md#bnn-height) property.
 - [Module Bundler](docs/features-docs.md#module-bundler) with native `@import` syntax.
 - Global [variables](docs/features-docs.md#variables) with native custom properties syntax.
+- Minify/Compress the generated CSS.
 
 View all [features docs here](docs/features-docs.md).
 

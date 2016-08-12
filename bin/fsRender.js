@@ -12,6 +12,7 @@ config.bnnImport = true;
 config.bnnAlign = true;
 config.bnnWidth = true;
 config.bnnHeight = true;
+config.compress = false;
 
 const Banana = require('../src/banana.js')(config);
 
