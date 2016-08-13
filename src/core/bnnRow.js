@@ -3,7 +3,8 @@ const addProperty = require('../helpers/addProperty.js');
 const removeProperty = require('../helpers/removeProperty.js');
 
 /**
- * Compile the bnn-row property values into a centered responsive flex container.
+ * Compile the bnn-row property values into
+ * a centered responsive flex container.
  * @module src/core/bnnRow
  * @param {array} declarations - Declarations list for a single CSS rule (AST)
  */

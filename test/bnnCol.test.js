@@ -6,7 +6,8 @@ describe('bnnCol()', () => {
 
   // --------------------------
 
-  it('Should return a corresponding width with calc() and margins gutters.', () => {
+  it('Should return a corresponding width with calc()' +
+    ' and margins gutters.', () => {
 
     const ast = css.parse('.a{bnn-col: 3/12 5px;}');
 
@@ -15,14 +16,16 @@ describe('bnnCol()', () => {
     });
 
     const result = css.stringify(ast);
-    const expect = '.a {\n  width: calc(((100% * 3) / 12) - (5px * 2));\n  margin-right: 5px;\n  margin-left: 5px;\n}';
+    const expect = '.a {\n  width: calc(((100% * 3) / 12) - (5px * 2));\n' +
+      '  margin-right: 5px;\n  margin-left: 5px;\n}';
 
     assert.equal(result, expect);
   });
 
   // --------------------------
 
-  it('Should return a corresponding width with calc() and 0px of gutters.', () => {
+  it('Should return a corresponding width with calc()' +
+    ' and 0px of gutters.', () => {
 
     const ast = css.parse('.a{bnn-col: 3/12;}');
 
@@ -31,7 +34,8 @@ describe('bnnCol()', () => {
     });
 
     const result = css.stringify(ast);
-    const expect = '.a {\n  width: calc(((100% * 3) / 12) - (0px * 2));\n  margin-right: 0px;\n  margin-left: 0px;\n}';
+    const expect = '.a {\n  width: calc(((100% * 3) / 12) - (0px * 2));\n' +
+      '  margin-right: 0px;\n  margin-left: 0px;\n}';
 
     assert.equal(result, expect);
   });

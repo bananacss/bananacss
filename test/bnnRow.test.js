@@ -15,7 +15,9 @@ describe('bnnRow()', () => {
     });
 
     const result = css.stringify(ast);
-    const expect = '.a {\n  display: flex;\n  flex-wrap: wrap;\n  width: 100%;\n  max-width: 900px;\n  margin-right: auto;\n  margin-left: auto;\n}';
+    const expect = '.a {\n  display: flex;\n  flex-wrap: wrap;\n' +
+      '  width: 100%;\n  max-width: 900px;\n  margin-right: auto;\n' +
+      '  margin-left: auto;\n}';
 
     assert.equal(result, expect);
   });

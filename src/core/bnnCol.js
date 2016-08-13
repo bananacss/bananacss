@@ -27,7 +27,8 @@ const bnnCol = (declarations) => {
         gutter = '0px';
       }
 
-      const width = `calc(((100% * ${colsWidth}) / ${totalCols}) - (${gutter} * 2))`;
+      const width = `calc(((100% * ${colsWidth}) / ${totalCols})` +
+      ` - (${gutter} * 2))`;
 
       addProperty(declarations, index, 'margin-left', gutter);
       addProperty(declarations, index, 'margin-right', gutter);
