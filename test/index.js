@@ -12,6 +12,7 @@ require('./bnnPosition.test.js');
 require('./bnnGradient.test.js');
 require('./bnnWidth.test.js');
 require('./bnnHeight.test.js');
+require('./bnnBox.test.js');
 require('./bnnRow.test.js');
 require('./bnnCol.test.js');
 

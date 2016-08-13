@@ -6,6 +6,7 @@
 - [bnn-align](#bnn-align)
 - [bnn-width](#bnn-width)
 - [bnn-height](#bnn-height)
+- [Box Model](#box-model)
 - [Grid System](#grid-system)
 - [Module Bundler](#module-bundler)
 - [Variables](#variables)
@@ -169,8 +170,43 @@
 
 <hr>
 
-## Grid System
+## Box Model
 
+*Banana code:*
+```css
+/* style.bnn */
+.demo {
+  bnn-box: inside;
+}
+```
+
+*Result:*
+```css
+/* style.css */
+.demo {
+  box-sizing: border-box;
+}
+```
+
+*Banana code:*
+```css
+/* style.bnn */
+.demo {
+  bnn-box: outside;
+}
+```
+
+*Result:*
+```css
+/* style.css */
+.demo {
+  box-sizing: content-box;
+}
+```
+
+<hr>
+
+## Grid System
 
 *Banana code:*
 ```css

@@ -96,6 +96,7 @@ config.bnnWidth = true; // Default: false
 config.bnnHeight = true; // Default: false
 config.bnnCol = true; // Default: false
 config.bnnRow = true; // Default: false
+config.bnnBox= true; // Default: false
 config.compress = true; // Default: false
 
 const Banana = require('banana')(config);
@@ -116,6 +117,7 @@ console.log(output); // .a {width: 50px; height: 50px;}
 - [bnn-align](docs/features-docs.md#bnn-align) property.
 - [bnn-width](docs/features-docs.md#bnn-width) property.
 - [bnn-height](docs/features-docs.md#bnn-height) property.
+- Intuitive box model with [bnn-box](docs/features-docs.md#bnn-box) property and inside/outside values.
 - Customizable [Grid System](docs/features-docs.md#grid-system) with `bnn-row` and `bnn-col`.
 - [Module Bundler](docs/features-docs.md#module-bundler) with native `@import` syntax.
 - Global [variables](docs/features-docs.md#variables) with native custom properties syntax.

@@ -76,6 +76,10 @@ const Banana = (config) => {
             require('../src/core/bnnRow.js')(rule.declarations);
           }
 
+          if (config.bnnBox) {
+            require('../src/core/bnnBox.js')(rule.declarations);
+          }
+
         }
       });
 
