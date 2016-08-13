@@ -6,6 +6,7 @@
 - [bnn-align](#bnn-align)
 - [bnn-width](#bnn-width)
 - [bnn-height](#bnn-height)
+- [Grid System](#grid-system)
 - [Module Bundler](#module-bundler)
 - [Variables](#variables)
 
@@ -165,6 +166,65 @@
   max-height: 300px;
 }
 ```
+
+<hr>
+
+## Grid System
+
+
+*Banana code:*
+```css
+/* style.bnn */
+.row {
+  bnn-row: 1200px;
+}
+
+.col-x {
+  bnn-col: 6/12 5px;
+}
+
+.col-y {
+  bnn-col: 6/12 5px;
+}
+
+.col-z {
+  bnn-col: 12/12 5px;
+}
+```
+
+*Result:*
+```css
+/* style.css */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.col-x {
+  width: calc(((100% * 6) / 12) - (5px * 2));
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.col-y {
+  width: calc(((100% * 6) / 12) - (5px * 2));
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.col-z {
+  width: calc(((100% * 12) / 12) - (5px * 2));
+  margin-right: 5px;
+  margin-left: 5px;
+}
+```
+
+*Example result:*
+![Grid Results](grid.png)
 
 <hr>
 

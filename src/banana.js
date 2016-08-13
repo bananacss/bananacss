@@ -68,6 +68,14 @@ const Banana = (config) => {
             require('../src/core/bnnHeight.js')(rule.declarations);
           }
 
+          if (config.bnnCol) {
+            require('../src/core/bnnCol.js')(rule.declarations);
+          }
+
+          if (config.bnnRow) {
+            require('../src/core/bnnRow.js')(rule.declarations);
+          }
+
         }
       });
 
