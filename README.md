@@ -111,19 +111,19 @@ console.log(output); // .a {width: 50px; height: 50px;}
 
 ## Features
 
-- [bnn-size](docs/features-docs.md#bnn-size) property.
-- [bnn-position](docs/features-docs.md#bnn-position) property.
-- [bnn-gradient](docs/features-docs.md#bnn-gradient) property.
-- [bnn-align](docs/features-docs.md#bnn-align) property.
-- [bnn-width](docs/features-docs.md#bnn-width) property.
-- [bnn-height](docs/features-docs.md#bnn-height) property.
-- Intuitive box model with [bnn-box](docs/features-docs.md#bnn-box) property and inside/outside values.
-- Customizable [Grid System](docs/features-docs.md#grid-system) with `bnn-row` and `bnn-col`.
-- [Module Bundler](docs/features-docs.md#module-bundler) with native `@import` syntax.
-- Global [variables](docs/features-docs.md#variables) with native custom properties syntax.
+- [bnn-size](docs/bnn-size.md) property.
+- [bnn-position](docs/bnn-position.md) property.
+- [bnn-gradient](docs/bnn-gradient.md) property.
+- [bnn-align](docs/bnn-align.md) property.
+- [bnn-width](docs/bnn-width.md) property.
+- [bnn-height](docs/bnn-height.md) property.
+- Intuitive box model with [bnn-box](docs/bnn-box.md) property and inside/outside values.
+- Customizable [Grid System](docs/grid-system.md) with `bnn-row` and `bnn-col`.
+- [Module Bundler](docs/module-bundler.md) with native `@import` syntax.
+- Global [variables](docs/variables.md) with native custom properties syntax.
 - Minify/Compress the generated CSS.
 
-View all [features docs here](docs/features-docs.md).
+View all [features docs here](docs/index.md).
 
 <hr>
 
