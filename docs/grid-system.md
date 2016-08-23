@@ -1,7 +1,7 @@
 # Grid system
-Abstraction for a powerful semantic grid system based in flexbox and calc().
 
 ## Summary
+Abstraction for a powerful semantic grid system based in flexbox and calc().
 
 <hr>
 

@@ -1,6 +1,7 @@
 'use strict';
 
 const css = require('css');
+const addIterations = require('css-ast-iterations');
 
 /**
  * Get config for dependecies injectio and run all bnn modules
@@ -19,20 +20,23 @@ const Banana = (config) => {
     render: (inputPath, stylesheet) => {
 
       const ast = css.parse(stylesheet);
+      addIterations(ast);
+
       const rules = ast.stylesheet.rules;
+      //console.log(rules[2]);
 
       // Search for all the @import and generate a single AST
-      rules.forEach((rule, index) => {
-        if (rule.import) {
+      ast.findAllRulesByType('import', (rule, index) => {
           if (config.bnnImport) {
             const bnnImport = require('../src/core/bnnImport.js');
             bnnImport(inputPath, rule.import, rules, index);
           }
-        }
       });
 
+      addIterations(ast);
+
       // Search for all global variables and compile
-      rules.forEach((rule, index) => {
+      ast.findAllRules((rule, index) => {
         if ('' + rule.selectors === ':root') {
           if (config.bnnVariable) {
             require('../src/core/bnnVariable.js')(rule, rules, index);
@@ -41,11 +45,10 @@ const Banana = (config) => {
       });
 
       // Search for all banana properties and compile
-      rules.forEach((rule) => {
-        if (rule.selectors) {
+      ast.findAllRulesByType('rule', (rule) => {
 
           if (config.bnnSize) {
-            require('../src/core/bnnSize.js')(rule.declarations);
+            require('../src/core/bnnSize.js')(rule);
           }
 
           if (config.bnnPosition) {
@@ -80,7 +83,6 @@ const Banana = (config) => {
             require('../src/core/bnnBox.js')(rule.declarations);
           }
 
-        }
       });
 
       return css.stringify(ast, {compress: config.compress});

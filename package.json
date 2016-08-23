@@ -31,7 +31,8 @@
   "dependencies": {
     "chokidar": "^1.6.0",
     "commander": "^2.9.0",
-    "css": "^2.2.1"
+    "css": "^2.2.1",
+    "css-ast-iterations": "^0.1.1"
   },
   "scripts": {
     "test": "mocha test/index.js",
