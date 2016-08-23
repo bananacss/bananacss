@@ -9,17 +9,17 @@ const bnnBox = (rule) => {
 
     rule.removeDeclaration(index);
 
-      let boxModel = declaration.getParam(0);
+    let boxModel = declaration.getParam(0);
 
-      if (boxModel === 'inside') {
-        boxModel = 'border-box';
-      }
+    if (boxModel === 'inside') {
+      boxModel = 'border-box';
+    }
 
-      if (boxModel === 'outside') {
-        boxModel = 'content-box';
-      }
+    if (boxModel === 'outside') {
+      boxModel = 'content-box';
+    }
 
-      rule.addDeclaration('box-sizing', boxModel, index);
+    rule.addDeclaration('box-sizing', boxModel, index);
 
   });
 };
