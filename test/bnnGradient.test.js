@@ -1,5 +1,6 @@
 const assert = require('assert');
 const css = require('css');
+const addIterations = require('css-ast-iterations');
 const bnnGradient = require('../src/core/bnnGradient.js');
 
 describe('bnnGradient()', () => {
@@ -9,9 +10,10 @@ describe('bnnGradient()', () => {
   it('Should return a gradient with two colors.', () => {
 
     const ast = css.parse('.a{bnn-gradient: red yellow;}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnGradient(rule.declarations);
+      if (rule.selectors) bnnGradient(rule);
     });
 
     const result = css.stringify(ast);
@@ -27,9 +29,10 @@ describe('bnnGradient()', () => {
     ' gradient.', () => {
 
     const ast = css.parse('.a{bnn-gradient: red yellow vertical;}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnGradient(rule.declarations);
+      if (rule.selectors) bnnGradient(rule);
     });
 
     const result = css.stringify(ast);
@@ -45,9 +48,10 @@ describe('bnnGradient()', () => {
     ' gradient.', () => {
 
     const ast = css.parse('.a{bnn-gradient: red yellow horizontal;}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnGradient(rule.declarations);
+      if (rule.selectors) bnnGradient(rule);
     });
 
     const result = css.stringify(ast);

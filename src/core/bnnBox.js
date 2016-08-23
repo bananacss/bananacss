@@ -1,21 +1,15 @@
-const getParam = require('../helpers/getParam.js');
-const addProperty = require('../helpers/addProperty.js');
-const removeProperty = require('../helpers/removeProperty.js');
-
 /**
  * Compile the bnn-box property values into correct box model.
  * @module src/core/bnnBox
- * @param {array} declarations - Declarations list for a single CSS rule (AST)
+ * @param {array} rule - Single CSS rule (AST)
  */
-const bnnBox = (declarations) => {
 
-  declarations.forEach((declaration, index) => {
+const bnnBox = (rule) => {
+  rule.findDeclarationsByProperty('bnn-box', (declaration, index) => {
 
-    if (declaration.property === 'bnn-box') {
+    rule.removeDeclaration(index);
 
-      removeProperty(declarations, index);
-
-      let boxModel = getParam(declaration.value, 0);
+      let boxModel = declaration.getParam(0);
 
       if (boxModel === 'inside') {
         boxModel = 'border-box';
@@ -25,12 +19,9 @@ const bnnBox = (declarations) => {
         boxModel = 'content-box';
       }
 
-      addProperty(declarations, index, 'box-sizing', boxModel);
-
-    }
+      rule.addDeclaration('box-sizing', boxModel, index);
 
   });
-
 };
 
 module.exports = bnnBox;

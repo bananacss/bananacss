@@ -1,91 +1,82 @@
-const getParam = require('../helpers/getParam.js');
-const addProperty = require('../helpers/addProperty.js');
-const removeProperty = require('../helpers/removeProperty.js');
-
 /**
  * Compile the bnn-align property values into flex align.
  * @module src/core/bnnAlign
- * @param {array} declarations - Declarations list for a single CSS rule (AST)
+ * @param {array} rule - Single CSS rule (AST)
  */
-const bnnAlign = (declarations) => {
 
-  declarations.forEach((declaration, index) => {
+const bnnAlign = (rule) => {
+  rule.findDeclarationsByProperty('bnn-align', (declaration, index) => {
 
-    if (declaration.property === 'bnn-align') {
+    rule.removeDeclaration(index);
 
-      removeProperty(declarations, index);
+    const propertyHorizontal = declaration.getParam(0);
+    const propertyVertical = declaration.getParam(1);
 
-      const propertyHorizontal = getParam(declaration.value, 0);
-      const propertyVertical = getParam(declaration.value, 1);
-
-      const horizontalValues = [
-        { type: 'left',
-          declarations: {
-            property: 'justify-content',
-            value: 'flex-start'
-          }
-        },
-        { type: 'right',
-          declarations: {
-            property: 'justify-content',
-            value: 'flex-end'
-          }
-        },
-        { type: 'center',
-          declarations: {
-            property: 'justify-content',
-            value: propertyHorizontal
-          }
+    const horizontalValues = [
+      { type: 'left',
+        declarations: {
+          property: 'justify-content',
+          value: 'flex-start'
         }
-      ];
-
-      const verticalValues = [
-        { type: 'top',
-          declarations: {
-            property: 'align-items',
-            value: 'flex-start'
-          }
-        },
-        { type: 'bottom',
-          declarations: {
-            property: 'align-items',
-            value: 'flex-end'
-          }
-        },
-        { type: 'center',
-          declarations: {
-            property: 'align-items',
-            value: propertyVertical
-          }
+      },
+      { type: 'right',
+        declarations: {
+          property: 'justify-content',
+          value: 'flex-end'
         }
-      ];
-
-      const testVertical = (element) => {
-        if (element.type === propertyVertical) {
-          const property = element.declarations.property;
-          const value = element.declarations.value;
-          addProperty(declarations, index, property, value);
+      },
+      { type: 'center',
+        declarations: {
+          property: 'justify-content',
+          value: propertyHorizontal
         }
-      };
+      }
+    ];
 
-      const testHorizontal = (element) => {
-        if (element.type === propertyHorizontal) {
-          const property = element.declarations.property;
-          const value = element.declarations.value;
-          addProperty(declarations, index, property, value);
+    const verticalValues = [
+      { type: 'top',
+        declarations: {
+          property: 'align-items',
+          value: 'flex-start'
         }
-      };
+      },
+      { type: 'bottom',
+        declarations: {
+          property: 'align-items',
+          value: 'flex-end'
+        }
+      },
+      { type: 'center',
+        declarations: {
+          property: 'align-items',
+          value: propertyVertical
+        }
+      }
+    ];
 
-      verticalValues.forEach(testVertical);
-      horizontalValues.forEach(testHorizontal);
+    const testVertical = (element) => {
+      if (element.type === propertyVertical) {
+        const property = element.declarations.property;
+        const value = element.declarations.value;
+        rule.addDeclaration(property, value, index);
+      }
+    };
 
-      addProperty(declarations, index, 'flex-wrap', 'wrap');
-      addProperty(declarations, index, 'display', 'flex');
+    const testHorizontal = (element) => {
+      if (element.type === propertyHorizontal) {
+        const property = element.declarations.property;
+        const value = element.declarations.value;
+        rule.addDeclaration(property, value, index);
+      }
+    };
 
-    }
+    verticalValues.forEach(testVertical);
+    horizontalValues.forEach(testHorizontal);
+
+    rule.addDeclaration('flex-wrap', 'wrap', index);
+    rule.addDeclaration('display', 'flex', index);
 
   });
-
 };
 
 module.exports = bnnAlign;

@@ -1,34 +1,25 @@
-const getParam = require('../helpers/getParam.js');
-const addProperty = require('../helpers/addProperty.js');
-const removeProperty = require('../helpers/removeProperty.js');
-
 /**
  * Compile the bnn-row property values into
  * a centered responsive flex container.
  * @module src/core/bnnRow
- * @param {array} declarations - Declarations list for a single CSS rule (AST)
+ * @param {array} rule - Single CSS rule (AST)
  */
-const bnnRow = (declarations) => {
 
-  declarations.forEach((declaration, index) => {
+const bnnRow = (rule) => {
+  rule.findDeclarationsByProperty('bnn-row', (declaration, index) => {
 
-    if (declaration.property === 'bnn-row') {
+    rule.removeDeclaration(index);
 
-      removeProperty(declarations, index);
+    const width = declaration.getParam(0);
 
-      const width = getParam(declaration.value, 0);
-
-      addProperty(declarations, index, 'margin-left', 'auto');
-      addProperty(declarations, index, 'margin-right', 'auto');
-      addProperty(declarations, index, 'max-width', width);
-      addProperty(declarations, index, 'width', '100%');
-      addProperty(declarations, index, 'flex-wrap', 'wrap');
-      addProperty(declarations, index, 'display', 'flex');
-
-    }
+    rule.addDeclaration('margin-left', 'auto', index);
+    rule.addDeclaration('margin-right', 'auto', index);
+    rule.addDeclaration('max-width', width, index);
+    rule.addDeclaration('width', '100%', index);
+    rule.addDeclaration('flex-wrap', 'wrap', index);
+    rule.addDeclaration('display', 'flex', index);
 
   });
-
 };
 
 module.exports = bnnRow;

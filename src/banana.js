@@ -8,6 +8,7 @@ const addIterations = require('css-ast-iterations');
  * @module src/banana
  * @param {object} config - Modules for dependecies injection
  */
+
 const Banana = (config) => {
 
   /**
@@ -16,30 +17,31 @@ const Banana = (config) => {
    * @param {string} inputPath - input file path
    * @param {array} stylesheet - AST stylesheet
    */
+
   return {
     render: (inputPath, stylesheet) => {
 
       const ast = css.parse(stylesheet);
-      addIterations(ast);
 
-      const rules = ast.stylesheet.rules;
-      //console.log(rules[2]);
+      // Add all methods for itarate on AST (before import modules)
+      addIterations(ast);
 
       // Search for all the @import and generate a single AST
       ast.findAllRulesByType('import', (rule, index) => {
           if (config.bnnImport) {
             const bnnImport = require('../src/core/bnnImport.js');
-            bnnImport(inputPath, rule.import, rules, index);
+            bnnImport(inputPath, rule.import, ast.stylesheet.rules, index);
           }
       });
 
+      // Add all methods for itarate on AST (after import modules)
       addIterations(ast);
 
       // Search for all global variables and compile
       ast.findAllRules((rule, index) => {
         if ('' + rule.selectors === ':root') {
           if (config.bnnVariable) {
-            require('../src/core/bnnVariable.js')(rule, rules, index);
+            require('../src/core/bnnVariable.js')(rule, ast.stylesheet.rules, index);
           }
         }
       });
@@ -52,35 +54,35 @@ const Banana = (config) => {
           }
 
           if (config.bnnPosition) {
-            require('../src/core/bnnPosition.js')(rule.declarations);
+            require('../src/core/bnnPosition.js')(rule);
           }
 
           if (config.bnnGradient) {
-            require('../src/core/bnnGradient.js')(rule.declarations);
+            require('../src/core/bnnGradient.js')(rule);
           }
 
           if (config.bnnAlign) {
-            require('../src/core/bnnAlign.js')(rule.declarations);
+            require('../src/core/bnnAlign.js')(rule);
           }
 
           if (config.bnnWidth) {
-            require('../src/core/bnnWidth.js')(rule.declarations);
+            require('../src/core/bnnWidth.js')(rule);
           }
 
           if (config.bnnHeight) {
-            require('../src/core/bnnHeight.js')(rule.declarations);
+            require('../src/core/bnnHeight.js')(rule);
           }
 
           if (config.bnnCol) {
-            require('../src/core/bnnCol.js')(rule.declarations);
+            require('../src/core/bnnCol.js')(rule);
           }
 
           if (config.bnnRow) {
-            require('../src/core/bnnRow.js')(rule.declarations);
+            require('../src/core/bnnRow.js')(rule);
           }
 
           if (config.bnnBox) {
-            require('../src/core/bnnBox.js')(rule.declarations);
+            require('../src/core/bnnBox.js')(rule);
           }
 
       });

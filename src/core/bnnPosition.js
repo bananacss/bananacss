@@ -1,41 +1,32 @@
-const getParam = require('../helpers/getParam.js');
-const addProperty = require('../helpers/addProperty.js');
-const removeProperty = require('../helpers/removeProperty.js');
-
 /**
  * Compile the bnn-position property values
  * into top, right, left and bottom or centralize with margins.
  * @module src/core/bnnPosition
- * @param {array} declarations - Declarations list for a single CSS rule (AST)
+ * @param {array} rule - Single CSS rule (AST)
  */
-const bnnPosition = (declarations) => {
 
-  declarations.forEach((declaration, index) => {
+const bnnPosition = (rule) => {
+  rule.findDeclarationsByProperty('bnn-position', (declaration, index) => {
 
-    if (declaration.property === 'bnn-position') {
+    rule.removeDeclaration(index);
 
-      removeProperty(declarations, index);
-
-      const propertyValue1 = getParam(declaration.value, 0);
-      const propertyValue2 = getParam(declaration.value, 1);
-      const propertyValue3 = getParam(declaration.value, 2);
-      const propertyValue4 = getParam(declaration.value, 3);
+      const propertyValue1 = declaration.getParam(0);
+      const propertyValue2 = declaration.getParam(1);
+      const propertyValue3 = declaration.getParam(2);
+      const propertyValue4 = declaration.getParam(3);
 
       if (propertyValue1 === 'center') {
-        addProperty(declarations, index, 'margin-right', 'auto');
-        addProperty(declarations, index, 'margin-left', 'auto');
-        addProperty(declarations, index, 'display', 'block');
+        rule.addDeclaration('margin-right', 'auto', index);
+        rule.addDeclaration('margin-left', 'auto', index);
+        rule.addDeclaration('display', 'block', index);
       } else {
-        addProperty(declarations, index, 'left', propertyValue4);
-        addProperty(declarations, index, 'bottom', propertyValue3);
-        addProperty(declarations, index, 'right', propertyValue2);
-        addProperty(declarations, index, 'top', propertyValue1);
+        rule.addDeclaration('left', propertyValue4, index);
+        rule.addDeclaration('bottom', propertyValue3, index);
+        rule.addDeclaration('right', propertyValue2, index);
+        rule.addDeclaration('top', propertyValue1, index);
       }
 
-    }
-
   });
-
 };
 
 module.exports = bnnPosition;

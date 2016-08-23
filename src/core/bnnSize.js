@@ -7,16 +7,15 @@
 const bnnSize = (rule) => {
   rule.findDeclarationsByProperty('bnn-size', (declaration, index) => {
 
-      rule.removeDeclaration(index);
+    rule.removeDeclaration(index);
 
-      const width = declaration.getParam(0);
-      const height = declaration.getParam(1);
+    const width = declaration.getParam(0);
+    const height = declaration.getParam(1);
 
-      rule.addDeclaration('height', height, index);
-      rule.addDeclaration('width', width, index);
+    rule.addDeclaration('height', height, index);
+    rule.addDeclaration('width', width, index);
 
   });
-
 };
 
 module.exports = bnnSize;

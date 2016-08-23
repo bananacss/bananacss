@@ -1,5 +1,6 @@
 const assert = require('assert');
 const css = require('css');
+const addIterations = require('css-ast-iterations');
 const bnnPosition = require('../src/core/bnnPosition.js');
 
 describe('bnnPosition()', () => {
@@ -10,9 +11,10 @@ describe('bnnPosition()', () => {
     ' value.', () => {
 
     const ast = css.parse('.a{bnn-position: 10px 20px 30px 40px;}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnPosition(rule.declarations);
+      if (rule.selectors) bnnPosition(rule);
     });
 
     const result = css.stringify(ast);
@@ -28,9 +30,10 @@ describe('bnnPosition()', () => {
     ' value.', () => {
 
     const ast = css.parse('.a{bnn-position: 10px;}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnPosition(rule.declarations);
+      if (rule.selectors) bnnPosition(rule);
     });
 
     const result = css.stringify(ast);
@@ -45,9 +48,10 @@ describe('bnnPosition()', () => {
   it('If the value is center, should return a block centered element', () => {
 
     const ast = css.parse('.a{bnn-position: center;}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnPosition(rule.declarations);
+      if (rule.selectors) bnnPosition(rule);
     });
 
     const result = css.stringify(ast);

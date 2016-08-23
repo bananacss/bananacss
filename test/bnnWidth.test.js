@@ -1,5 +1,6 @@
 const assert = require('assert');
 const css = require('css');
+const addIterations = require('css-ast-iterations');
 const bnnWidth = require('../src/core/bnnWidth.js');
 
 describe('bnnWidth()', () => {
@@ -10,9 +11,10 @@ describe('bnnWidth()', () => {
     ' and max-width values.', () => {
 
     const ast = css.parse('.a{bnn-width: 300px;}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnWidth(rule.declarations);
+      if (rule.selectors) bnnWidth(rule);
     });
 
     const result = css.stringify(ast);
