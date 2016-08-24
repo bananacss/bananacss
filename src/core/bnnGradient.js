@@ -2,7 +2,7 @@
  * Compile the bnn-gradient property values
  * into background-image: linear-gradient();.
  * @module src/core/bnnGradient
- * @param {array} rule - Single CSS rule (AST)
+ * @param {object} rule - Single CSS rule (AST)
  */
 
 const bnnGradient = (rule) => {

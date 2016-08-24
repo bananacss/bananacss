@@ -1,7 +1,7 @@
 /**
  * Compile the bnn-align property values into flex align.
  * @module src/core/bnnAlign
- * @param {array} rule - Single CSS rule (AST)
+ * @param {object} rule - Single CSS rule (AST)
  */
 
 const bnnAlign = (rule) => {

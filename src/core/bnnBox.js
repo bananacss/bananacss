@@ -1,7 +1,7 @@
 /**
  * Compile the bnn-box property values into correct box model.
  * @module src/core/bnnBox
- * @param {array} rule - Single CSS rule (AST)
+ * @param {object} rule - Single CSS rule (AST)
  */
 
 const bnnBox = (rule) => {

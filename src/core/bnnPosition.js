@@ -2,7 +2,7 @@
  * Compile the bnn-position property values
  * into top, right, left and bottom or centralize with margins.
  * @module src/core/bnnPosition
- * @param {array} rule - Single CSS rule (AST)
+ * @param {object} rule - Single CSS rule (AST)
  */
 
 const bnnPosition = (rule) => {

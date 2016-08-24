@@ -1,8 +1,8 @@
 /**
  * Get custom properties values and add to corresponding var().
  * @module src/core/bnnVariable
- * @param {array} rule - :root rule
- * @param {array} ast - Main CSS AST
+ * @param {object} rule - :root rule
+ * @param {object} ast - Main CSS AST
  * @param {number} index - :root seletor position in mains AST array
  */
 

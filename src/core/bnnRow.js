@@ -2,7 +2,7 @@
  * Compile the bnn-row property values into
  * a centered responsive flex container.
  * @module src/core/bnnRow
- * @param {array} rule - Single CSS rule (AST)
+ * @param {object} rule - Single CSS rule (AST)
  */
 
 const bnnRow = (rule) => {

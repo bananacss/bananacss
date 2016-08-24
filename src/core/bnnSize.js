@@ -1,7 +1,7 @@
 /**
  * Compile the bnn-size property values into width and height.
  * @module src/core/bnnSize
- * @param {array} rule - Single CSS rule (AST)
+ * @param {object} rule - Single CSS rule (AST)
  */
 
 const bnnSize = (rule) => {

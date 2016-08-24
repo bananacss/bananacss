@@ -15,7 +15,7 @@ const Banana = (config) => {
    * Iteration in AST and run all modules
    * @method render
    * @param {string} inputPath - input file path
-   * @param {array} stylesheet - AST stylesheet
+   * @param {object} stylesheet - AST stylesheet
    */
 
   return {

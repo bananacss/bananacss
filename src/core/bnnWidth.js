@@ -1,7 +1,7 @@
 /**
  * Compile the bnn-width property values into width and max-width.
  * @module src/core/bnnWidth
- * @param {array} rule - Single CSS rule (AST)
+ * @param {object} rule - Single CSS rule (AST)
  */
 
 const bnnWidth = (rule) => {

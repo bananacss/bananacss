@@ -8,7 +8,7 @@ const path = require('path');
  * @module src/core/bnnImport
  * @param {string} inputPath - Main file path
  * @param {string} importPath - Module file path
- * @param {array} ast - Rules list for a CSS (AST)
+ * @param {object} ast - Rules list for a CSS (AST)
  * @param {number} index - @import position in main AST array
  */
 

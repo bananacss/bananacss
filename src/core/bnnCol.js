@@ -1,7 +1,7 @@
 /**
  * Compile the bnn-col property values into corresponding width and margins.
  * @module src/core/bnnCol
- * @param {array} rule - Single CSS rule (AST)
+ * @param {object} rule - Single CSS rule (AST)
  */
 
 const bnnCol = (rule) => {
