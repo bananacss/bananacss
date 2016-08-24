@@ -8,14 +8,14 @@ const path = require('path');
  * @module src/core/bnnImport
  * @param {string} inputPath - Main file path
  * @param {string} importPath - Module file path
- * @param {array} mainRules - Rules list for a CSS (AST)
+ * @param {array} ast - Rules list for a CSS (AST)
  * @param {number} index - @import position in main AST array
  */
 
-const bnnImport = (inputPath, importPath, mainRules, index) => {
+const bnnImport = (inputPath, importPath, ast, index) => {
 
   // Delete the import rule
-  mainRules.splice(index, 1);
+  ast.removeRule(index);
 
   // Resolve path
   const basePath = path.dirname(inputPath);
@@ -26,12 +26,12 @@ const bnnImport = (inputPath, importPath, mainRules, index) => {
 
   // Get the new AST from module
   const bnnModule = fs.readFileSync(resolvedPath, 'utf8');
-  const ast = css.parse(bnnModule);
-  addIterations(ast);
+  const astModule = css.parse(bnnModule);
+  addIterations(astModule);
 
   // Add new rules on Main AST
-  ast.findAllRules((rule) => {
-    mainRules.splice(index, 0, rule);
+  astModule.findAllRules((rule) => {
+    ast.addRule(rule, index);
   });
 
 };

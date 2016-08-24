@@ -13,10 +13,8 @@ describe('bnnImport()', () => {
     const ast = css.parse('@import fixtures/module.bnn; .a{width: 500px;}');
     addIterations(ast);
 
-    const rules = ast.stylesheet.rules;
-
     ast.stylesheet.rules.forEach((rule, index) => {
-      if (rule.import) bnnImport('test/main.bnn', rule.import, rules, index);
+      if (rule.import) bnnImport('test/main.bnn', rule.import, ast, index);
     });
 
     const result = css.stringify(ast);
@@ -33,10 +31,8 @@ describe('bnnImport()', () => {
     const ast = css.parse('.a{width: 500px;} @import fixtures/module.bnn;');
     addIterations(ast);
 
-    const rules = ast.stylesheet.rules;
-
     ast.stylesheet.rules.forEach((rule, index) => {
-      if (rule.import) bnnImport('test/main.bnn', rule.import, rules, index);
+      if (rule.import) bnnImport('test/main.bnn', rule.import, ast, index);
     });
 
     const result = css.stringify(ast);

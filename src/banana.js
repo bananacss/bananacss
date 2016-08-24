@@ -30,7 +30,7 @@ const Banana = (config) => {
       ast.findAllRulesByType('import', (rule, index) => {
         if (config.bnnImport) {
           const bnnImport = require('../src/core/bnnImport.js');
-          bnnImport(inputPath, rule.import, ast.stylesheet.rules, index);
+          bnnImport(inputPath, rule.import, ast, index);
         }
       });
 
