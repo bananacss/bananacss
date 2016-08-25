@@ -9,7 +9,16 @@
 [![npm](https://img.shields.io/npm/v/bananacss.svg)](https://www.npmjs.com/package/bananacss)
 [![npm](https://img.shields.io/npm/dt/bananacss.svg)](https://www.npmjs.com/package/bananacss)
 
-![bnn-align](docs/img/bnn-align.gif)
+## What is?
+
+- Syntax **abstractions** for complex native CSS features.
+- If you can, compile native CSS features like a **pre-processor** (ex: Custom properties and @import).
+- Provide a simple abstraction for a **Semantic Grid System** with calc().
+- **Extra** features.
+
+## How it works?
+
+![Write your style with banana syntax and compile for pure CSS.](docs/img/bnn-align.gif)
 
 ## Table of contents
 
