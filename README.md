@@ -9,6 +9,8 @@
 [![npm](https://img.shields.io/npm/v/bananacss.svg)](https://www.npmjs.com/package/bananacss)
 [![npm](https://img.shields.io/npm/dt/bananacss.svg)](https://www.npmjs.com/package/bananacss)
 
+![bnn-align](docs/img/bnn-align.gif)
+
 ## Table of contents
 
 - [How to install](#how-to-install)
