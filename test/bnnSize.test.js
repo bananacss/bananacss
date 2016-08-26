@@ -1,5 +1,6 @@
 const assert = require('assert');
 const css = require('css');
+const addIterations = require('css-ast-iterations');
 const bnnSize = require('../src/core/bnnSize.js');
 
 describe('bnnSize()', () => {
@@ -9,9 +10,10 @@ describe('bnnSize()', () => {
   it('Should return a width and height with one specific value.', () => {
 
     const ast = css.parse('.a{bnn-size: 10px;}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnSize(rule.declarations);
+      if (rule.selectors) bnnSize(rule);
     });
 
     const result = css.stringify(ast);
@@ -25,9 +27,10 @@ describe('bnnSize()', () => {
   it('Should return a width and height with two specific values.', () => {
 
     const ast = css.parse('.a{bnn-size: 10px 50px;}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnSize(rule.declarations);
+      if (rule.selectors) bnnSize(rule);
     });
 
     const result = css.stringify(ast);

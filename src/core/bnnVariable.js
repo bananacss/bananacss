@@ -1,47 +1,46 @@
 /**
  * Get custom properties values and add to corresponding var().
  * @module src/core/bnnVariable
- * @param {array} rule - :root rule
- * @param {array} mainRule - Rules list for a CSS (AST)
+ * @param {object} rule - :root rule
+ * @param {object} ast - Main CSS AST
  * @param {number} index - :root seletor position in mains AST array
  */
-const bnnVariable = (rule, mainRules, index) => {
+
+const bnnVariable = (ast, rule, index) => {
 
   const customVars = [];
 
-  rule.declarations.forEach((declaration, index) => {
-    // Save a custom property and values
-    customVars[index] = [declaration.property, declaration.value];
+  // Save a custom property and values
+  rule.findDeclarations((declaration, declarationIndex) => {
+    customVars[declarationIndex] = [declaration.property, declaration.value];
   });
 
-  // Delete the :root selector
-  mainRules.splice(index, 1);
+  ast.removeRule(index);
 
-  // Find variables ans change for custom value
-  mainRules.forEach((rule) => {
-    rule.declarations.forEach((declaration) => {
+  // Find variables and change for custom value
+  ast.findAllDeclarations((declaration) => {
 
-      const isVariable = /var\(/.test(declaration.value);
+    const isVariable = /var\(/.test(declaration.value);
 
-      if(isVariable) {
-        customVars.forEach((v, index) => {
+    if(isVariable) {
+      customVars.forEach((v, index) => {
 
-          const variableValue = declaration.value
-                                                .replace(/var\(/, '')
-                                                .replace(/\)/, '');
+        const variableValue = declaration.value
+                                              .replace(/var\(/, '')
+                                              .replace(/\)/, '');
 
-          const customProperty = customVars[index][0];
-          const customValue = customVars[index][1];
+        const customProperty = customVars[index][0];
+        const customValue = customVars[index][1];
 
-          if (variableValue === customProperty) {
-            declaration.value = customValue;
-          }
+        if (variableValue === customProperty) {
+          declaration.value = customValue;
+        }
 
-        });
-      }
+      });
+    }
 
-    });
   });
+
 
 };
 

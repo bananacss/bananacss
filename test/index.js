@@ -1,8 +1,4 @@
 // test module
-require('./getParam.test.js');
-require('./addProperty.test.js');
-require('./removeProperty.test.js');
-
 require('./bnnImport.test.js');
 require('./bnnVariable.test.js');
 

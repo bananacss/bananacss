@@ -54,7 +54,7 @@ const fsRender = (inputPath, outputPath, log = 'Your file has been' +
     }
 
     const bnnStylesheet = data;
-    const cssStylesheet = Banana.render(inputPath , bnnStylesheet);
+    const cssStylesheet = Banana.render(bnnStylesheet, inputPath);
 
     fs.writeFile(outputPath, cssStylesheet);
     console.log(log);

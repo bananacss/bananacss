@@ -1,5 +1,6 @@
 const assert = require('assert');
 const css = require('css');
+const addIterations = require('css-ast-iterations');
 const bnnCol = require('../src/core/bnnCol.js');
 
 describe('bnnCol()', () => {
@@ -10,9 +11,10 @@ describe('bnnCol()', () => {
     ' and margins gutters.', () => {
 
     const ast = css.parse('.a{bnn-col: 3/12 5px;}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnCol(rule.declarations);
+      if (rule.selectors) bnnCol(rule);
     });
 
     const result = css.stringify(ast);
@@ -28,9 +30,10 @@ describe('bnnCol()', () => {
     ' and 0px of gutters.', () => {
 
     const ast = css.parse('.a{bnn-col: 3/12;}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnCol(rule.declarations);
+      if (rule.selectors) bnnCol(rule);
     });
 
     const result = css.stringify(ast);

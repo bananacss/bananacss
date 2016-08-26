@@ -9,6 +9,17 @@
 [![npm](https://img.shields.io/npm/v/bananacss.svg)](https://www.npmjs.com/package/bananacss)
 [![npm](https://img.shields.io/npm/dt/bananacss.svg)](https://www.npmjs.com/package/bananacss)
 
+## What is?
+
+- Syntax **abstractions** for complex native CSS features.
+- If you can, compile native CSS features like a **pre-processor** (ex: Custom properties and @import).
+- Provide a simple abstraction for a **Semantic Grid System** with calc().
+- **Extra** features.
+
+## How it works?
+
+![Write your style with banana syntax and compile for pure CSS.](docs/img/bnn-align.gif)
+
 ## Table of contents
 
 - [How to install](#how-to-install)
@@ -102,7 +113,7 @@ config.compress = true; // Default: false
 const Banana = require('banana')(config);
 
 // Output the css
-const output = Banana.render("./fake_path.bnn", inputBananaCode);
+const output = Banana.render(inputBananaCode);
 
 console.log(output); // .a {width: 50px; height: 50px;}
 ```

@@ -1,5 +1,6 @@
 const assert = require('assert');
 const css = require('css');
+const addIterations = require('css-ast-iterations');
 const bnnVariable = require('../src/core/bnnVariable.js');
 
 describe('bnnVariable()', () => {
@@ -11,10 +12,11 @@ describe('bnnVariable()', () => {
     const ast = css.parse(':root {--banana-color: #fff000;' +
       '--banana-size: 1px;} .a{color: var(--banana-color);}' +
       ' .b{width: var(--banana-size);}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule, index) => {
       if ('' + rule.selectors === ':root') {
-        bnnVariable(rule, ast.stylesheet.rules, index);
+        bnnVariable(ast, rule, index);
       }
     });
 

@@ -1,5 +1,6 @@
 const assert = require('assert');
 const css = require('css');
+const addIterations = require('css-ast-iterations');
 const bnnImport = require('../src/core/bnnImport.js');
 
 describe('bnnImport()', () => {
@@ -10,10 +11,10 @@ describe('bnnImport()', () => {
     ' main.bnn file', () => {
 
     const ast = css.parse('@import fixtures/module.bnn; .a{width: 500px;}');
-    const rules = ast.stylesheet.rules;
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule, index) => {
-      if (rule.import) bnnImport('test/main.bnn', rule.import, rules, index);
+      if (rule.import) bnnImport(rule.import, ast, index, 'test/main.bnn');
     });
 
     const result = css.stringify(ast);
@@ -28,10 +29,10 @@ describe('bnnImport()', () => {
     ' main.bnn file on a diferent position.', () => {
 
     const ast = css.parse('.a{width: 500px;} @import fixtures/module.bnn;');
-    const rules = ast.stylesheet.rules;
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule, index) => {
-      if (rule.import) bnnImport('test/main.bnn', rule.import, rules, index);
+      if (rule.import) bnnImport(rule.import, ast, index, 'test/main.bnn');
     });
 
     const result = css.stringify(ast);

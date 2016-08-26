@@ -1,5 +1,6 @@
 const assert = require('assert');
 const css = require('css');
+const addIterations = require('css-ast-iterations');
 const bnnHeight = require('../src/core/bnnHeight.js');
 
 describe('bnnHeight()', () => {
@@ -10,9 +11,10 @@ describe('bnnHeight()', () => {
     ' and max-height values.', () => {
 
     const ast = css.parse('.a{bnn-height: 300px;}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnHeight(rule.declarations);
+      if (rule.selectors) bnnHeight(rule);
     });
 
     const result = css.stringify(ast);

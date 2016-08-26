@@ -19,7 +19,7 @@ describe('render()', () => {
     const stylesheet = '.a {color:#000;bnn-size: 50px 100px;}' +
       '.b {color:#000;bnn-position: 10px 5px 8px 90px;margin: 10px;}';
 
-    const result = banana.render('teste.bnn', stylesheet);
+    const result = banana.render(stylesheet, 'teste.bnn');
 
     const expect = '.a {\n  color: #000;\n  width: 50px;\n' +
       '  height: 100px;\n}\n\n.b {\n  color: #000;\n' +

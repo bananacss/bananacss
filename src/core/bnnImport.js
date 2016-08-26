@@ -1,19 +1,21 @@
 const css = require('css');
+const addIterations = require('css-ast-iterations');
 const fs = require('fs');
 const path = require('path');
 
 /**
  * Get a module (@import) and add to mains bnn file (AST).
  * @module src/core/bnnImport
- * @param {string} inputPath - Main file path
  * @param {string} importPath - Module file path
- * @param {array} mainRules - Rules list for a CSS (AST)
+ * @param {object} ast - Rules list for a CSS (AST)
  * @param {number} index - @import position in main AST array
+ * @param {string} inputPath - Main file path
  */
-const bnnImport = (inputPath, importPath, mainRules, index) => {
+
+const bnnImport = (importPath, ast, index, inputPath) => {
 
   // Delete the import rule
-  mainRules.splice(index, 1);
+  ast.removeRule(index);
 
   // Resolve path
   const basePath = path.dirname(inputPath);
@@ -22,11 +24,14 @@ const bnnImport = (inputPath, importPath, mainRules, index) => {
                                   .replace(/\'/g, '');
   const resolvedPath = path.resolve(basePath + '/' + importPathClean);
 
+  // Get the new AST from module
   const bnnModule = fs.readFileSync(resolvedPath, 'utf8');
-  const ast = css.parse(bnnModule);
+  const astModule = css.parse(bnnModule);
+  addIterations(astModule);
 
-  ast.stylesheet.rules.forEach((rule) => {
-    mainRules.splice(index, 0, rule);
+  // Add new rules on Main AST
+  astModule.findAllRules((rule) => {
+    ast.addRule(rule, index);
   });
 
 };

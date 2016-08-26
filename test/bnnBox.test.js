@@ -1,5 +1,6 @@
 const assert = require('assert');
 const css = require('css');
+const addIterations = require('css-ast-iterations');
 const bnnBox = require('../src/core/bnnBox.js');
 
 describe('bnnBox()', () => {
@@ -9,9 +10,10 @@ describe('bnnBox()', () => {
   it('Should return a inside box model.', () => {
 
     const ast = css.parse('.a{bnn-box: inside;}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnBox(rule.declarations);
+      if (rule.selectors) bnnBox(rule);
     });
 
     const result = css.stringify(ast);
@@ -25,9 +27,10 @@ describe('bnnBox()', () => {
   it('Should return a outside box model.', () => {
 
     const ast = css.parse('.a{bnn-box: outside;}');
+    addIterations(ast);
 
     ast.stylesheet.rules.forEach((rule) => {
-      if (rule.selectors) bnnBox(rule.declarations);
+      if (rule.selectors) bnnBox(rule);
     });
 
     const result = css.stringify(ast);
