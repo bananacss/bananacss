@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const program  = require('commander');
+const path = require('path');
 const pkg = require('../package.json');
 const fsRender = require('./fsRender.js');
 const watcherFsRender = require('./watcherFsRender');
@@ -27,13 +28,16 @@ program
   })
   .parse(process.argv);
 
-const defaultOutputPath = inputPath.replace(/.bnn/g,'.css');
+// Resolve default output path
+const basePath = path.dirname(inputPath);
+const baseName = path.basename(inputPath).replace(/\.bnn/g,'.css');
+const defaultOutputPath = basePath + '/' + baseName;
 
 // execute the program with corresponding option
-if (program.watch) {
-  watcherFsRender(inputPath, defaultOutputPath);
-} else if (program.watch && program.out) {
+if (program.watch && program.out) {
   watcherFsRender(inputPath, outputPath);
+} else if (program.watch) {
+  watcherFsRender(inputPath, defaultOutputPath);
 } else if (program.out) {
   fsRender(inputPath, outputPath);
 } else {
