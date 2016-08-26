@@ -113,7 +113,7 @@ config.compress = true; // Default: false
 const Banana = require('banana')(config);
 
 // Output the css
-const output = Banana.render("./fake_path.bnn", inputBananaCode);
+const output = Banana.render(inputBananaCode);
 
 console.log(output); // .a {width: 50px; height: 50px;}
 ```

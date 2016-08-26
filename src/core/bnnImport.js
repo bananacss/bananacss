@@ -6,13 +6,13 @@ const path = require('path');
 /**
  * Get a module (@import) and add to mains bnn file (AST).
  * @module src/core/bnnImport
- * @param {string} inputPath - Main file path
  * @param {string} importPath - Module file path
  * @param {object} ast - Rules list for a CSS (AST)
  * @param {number} index - @import position in main AST array
+ * @param {string} inputPath - Main file path
  */
 
-const bnnImport = (inputPath, importPath, ast, index) => {
+const bnnImport = (importPath, ast, index, inputPath) => {
 
   // Delete the import rule
   ast.removeRule(index);

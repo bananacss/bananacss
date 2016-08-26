@@ -14,28 +14,25 @@ const Banana = (config) => {
   /**
    * Iteration in AST and run all modules
    * @method render
-   * @param {string} inputPath - input file path
    * @param {object} stylesheet - AST stylesheet
+   * @param {string} inputPath - input file path
    */
 
   return {
-    render: (inputPath, stylesheet) => {
+    render: (stylesheet, inputPath = 'fake_path') => {
 
       const ast = css.parse(stylesheet);
 
-      // Add all methods for itarate on AST (before import modules)
+      // Add all methods for itarate on AST
       addIterations(ast);
 
       // Search for all the @import and generate a single AST
-      ast.findAllRulesByType('import', (rule, index) => {
+      ast.findAllImport((urlForImport, index) => {
         if (config.bnnImport) {
           const bnnImport = require('../src/core/bnnImport.js');
-          bnnImport(inputPath, rule.import, ast, index);
+          bnnImport(urlForImport, ast, index, inputPath);
         }
       });
-
-      // Add all methods for itarate on AST (after import modules)
-      addIterations(ast);
 
       // Search for all global variables and compile
       ast.findAllRulesBySelectors(':root', (rule, index) => {
