@@ -41,6 +41,8 @@ const Banana = (config) => {
         }
       });
 
+
+
       // Search for all banana properties and compile
       ast.findAllRulesByType('rule', (rule) => {
 
@@ -80,6 +82,17 @@ const Banana = (config) => {
           require('../src/core/bnnBox.js')(rule);
         }
 
+      });
+
+      // Search for all @functions rules
+      ast.moonWalkAllRules((rule, index) => {
+        const isFunction = /\@function\ /.test(rule.selectors);
+        if (isFunction) {
+          if (config.bnnFunction) {
+            // console.log(rule.selectors);
+            require('../src/core/bnnFunction.js')(rule, ast, index);
+          }
+        }
       });
 
       return css.stringify(ast, {compress: config.compress});

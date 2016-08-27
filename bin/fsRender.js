@@ -15,6 +15,7 @@ config.bnnHeight = true;
 config.bnnCol = true;
 config.bnnRow = true;
 config.bnnBox = true;
+config.bnnFunction = true;
 config.compress = false;
 
 const Banana = require('../src/banana.js')(config);
