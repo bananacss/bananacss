@@ -14,7 +14,7 @@
 - Syntax **abstractions** for complex native CSS features.
 - If you can, compile native CSS features like a **pre-processor** (ex: Custom properties and @import).
 - Provide a simple abstraction for a **Semantic Grid System** with calc().
-- **Extra** features.
+- **Extra** features (ex: **@function**).
 
 ## How it works?
 
@@ -107,7 +107,8 @@ config.bnnWidth = true; // Default: false
 config.bnnHeight = true; // Default: false
 config.bnnCol = true; // Default: false
 config.bnnRow = true; // Default: false
-config.bnnBox= true; // Default: false
+config.bnnBox = true; // Default: false
+config.bnnFunction = true; // Default: false
 config.compress = true; // Default: false
 
 const Banana = require('banana')(config);
@@ -132,6 +133,7 @@ console.log(output); // .a {width: 50px; height: 50px;}
 - Customizable [Grid System](docs/grid-system.md) with `bnn-row` and `bnn-col`.
 - [Module Bundler](docs/module-bundler.md) with native `@import` syntax.
 - Global [variables](docs/variables.md) with native custom properties syntax.
+- Create reusable functions with [@function](docs/functions.md).
 - Minify/Compress the generated CSS.
 
 View all [features docs here](docs/index.md).
@@ -140,33 +142,7 @@ View all [features docs here](docs/index.md).
 
 ## Example
 
-*Banana code:*
-```css
-/* style.bnn */
-.header {
-	bnn-size: 100% 300px;
-	bnn-position: center;
-	bnn-gradient: #000 #fff;
-	bnn-align: center bottom;
-}
-```
-
-*Result:*
-```css
-/* style.css */
-.header {
-  width: 100%;
-  height: 300px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: linear-gradient(to bottom, #000, #fff);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-end;
-}
-```
+![Simple example](docs/img/ex.gif)
 
 <hr>
 
