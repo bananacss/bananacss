@@ -1,5 +1,5 @@
 /**
- * Compile the @function and bnn-function into corresponding properties and arguments.
+ * Compile the @function into corresponding properties and arguments.
  * @module src/core/bnnFunction
  * @param {object} rule - @function rule
  * @param {object} ast - Main CSS AST
