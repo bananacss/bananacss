@@ -10,3 +10,4 @@
 - [Grid System](grid-system.md)
 - [Module Bundler](module-bundler.md)
 - [Variables](variables.md)
+- [Functions](functions.md)
