@@ -1,0 +1,15 @@
+{
+	"bnnSize" : true,
+	"bnnPosition" : true,
+	"bnnGradient" : true,
+	"bnnVariable" : true,
+	"bnnImport" : true,
+	"bnnAlign" : true,
+	"bnnWidth" : true,
+	"bnnHeight" : true,
+	"bnnCol" : true,
+	"bnnRow" : true,
+	"bnnBox" : true,
+	"bnnFunction" : true,
+	"compress" : false
+}
