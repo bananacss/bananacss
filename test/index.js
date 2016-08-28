@@ -12,6 +12,8 @@ require('./bnnBox.test.js');
 require('./bnnRow.test.js');
 require('./bnnCol.test.js');
 
+require('./bnnFunction.test.js');
+
 require('./render.test.js');
 
 require('./cliVersion.test.js');

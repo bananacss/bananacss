@@ -1,23 +1,7 @@
 /* eslint no-console: ["error", { allow: ["log"] }] */
 
 const fs = require('fs');
-
-// features injection
-const config = {};
-config.bnnSize = true;
-config.bnnPosition = true;
-config.bnnGradient = true;
-config.bnnVariable = true;
-config.bnnImport = true;
-config.bnnAlign = true;
-config.bnnWidth = true;
-config.bnnHeight = true;
-config.bnnCol = true;
-config.bnnRow = true;
-config.bnnBox = true;
-config.compress = false;
-
-const Banana = require('../src/banana.js')(config);
+const defaultConfig = require('./defaultConfig');
 
 /**
  * Read the file a .bnn file, render and write a .css file.
@@ -26,6 +10,7 @@ const Banana = require('../src/banana.js')(config);
  * @param {string} outputPath - Output path for write a .css file
  * @param {string} log - Log for user feedback in terminal
  */
+
 const fsRender = (inputPath, outputPath, log = 'Your file has been' +
   ' compiled') => {
 
@@ -53,11 +38,22 @@ const fsRender = (inputPath, outputPath, log = 'Your file has been' +
       return console.log('Your output file doesn’t have the .css extension');
     }
 
+    // Inject the configs, compile and write .css file
     const bnnStylesheet = data;
-    const cssStylesheet = Banana.render(bnnStylesheet, inputPath);
 
-    fs.writeFile(outputPath, cssStylesheet);
-    console.log(log);
+    fs.readFile('./bananafile.json', 'utf8', (err, data) => {
+
+      const config = (err)
+        ? defaultConfig
+        : JSON.parse(data);
+
+      const Banana = require('../src/banana.js')(config);
+      const cssStylesheet = Banana.render(bnnStylesheet, inputPath);
+
+      fs.writeFile(outputPath, cssStylesheet);
+      console.log(log);
+
+    });
 
   });
 

@@ -14,7 +14,7 @@
 - Syntax **abstractions** for complex native CSS features.
 - If you can, compile native CSS features like a **pre-processor** (ex: Custom properties and @import).
 - Provide a simple abstraction for a **Semantic Grid System** with calc().
-- **Extra** features.
+- **Extra** features (ex: **@function**).
 
 ## How it works?
 
@@ -24,6 +24,7 @@
 
 - [How to install](#how-to-install)
 - [Command Line Usage](#command-line-usage)
+- [The bananafile.json](#the-bananafile)
 - [Module Usage](#module-usage)
 - [Features](#features)
 - [Example](#example)
@@ -90,6 +91,32 @@ $ banana --help
 
 <hr>
 
+## The bananafile
+
+Create a file called `bananafile.json` in the directory where you will run the command `$ banana` and configure as need.
+
+```json
+{
+	"bnnSize" : true,
+	"bnnPosition" : true,
+	"bnnGradient" : true,
+	"bnnVariable" : true,
+	"bnnImport" : true,
+	"bnnAlign" : true,
+	"bnnWidth" : true,
+	"bnnHeight" : true,
+	"bnnCol" : true,
+	"bnnRow" : true,
+	"bnnBox" : true,
+	"bnnFunction" : true,
+	"compress" : false
+}
+```
+
+*All features have `true` as default value, except the `compress`.*
+
+<hr>
+
 ## Module Usage
 
 ```js
@@ -97,18 +124,19 @@ const inputBananaCode = '.a {bnn-size: 50px;}';
 
 // Features injection
 const config = {};
-config.bnnSize = true; // Default: false
-config.bnnPosition = true; // Default: false
-config.bnnGradient = true; // Default: false
-config.bnnVariable = true; // Default: false
-config.bnnImport = true; // Default: false
-config.bnnAlign = true; // Default: false
-config.bnnWidth = true; // Default: false
-config.bnnHeight = true; // Default: false
-config.bnnCol = true; // Default: false
-config.bnnRow = true; // Default: false
-config.bnnBox= true; // Default: false
-config.compress = true; // Default: false
+config.bnnSize = true;
+config.bnnPosition = true;
+config.bnnGradient = true;
+config.bnnVariable = true;
+config.bnnImport = true;
+config.bnnAlign = true;
+config.bnnWidth = true;
+config.bnnHeight = true;
+config.bnnCol = true;
+config.bnnRow = true;
+config.bnnBox = true;
+config.bnnFunction = true;
+config.compress = true;
 
 const Banana = require('banana')(config);
 
@@ -132,6 +160,8 @@ console.log(output); // .a {width: 50px; height: 50px;}
 - Customizable [Grid System](docs/grid-system.md) with `bnn-row` and `bnn-col`.
 - [Module Bundler](docs/module-bundler.md) with native `@import` syntax.
 - Global [variables](docs/variables.md) with native custom properties syntax.
+- Create reusable functions with [@function](docs/functions.md).
+- Configure your build with [bananafile.json](the-bananafile).
 - Minify/Compress the generated CSS.
 
 View all [features docs here](docs/index.md).
@@ -140,33 +170,7 @@ View all [features docs here](docs/index.md).
 
 ## Example
 
-*Banana code:*
-```css
-/* style.bnn */
-.header {
-	bnn-size: 100% 300px;
-	bnn-position: center;
-	bnn-gradient: #000 #fff;
-	bnn-align: center bottom;
-}
-```
-
-*Result:*
-```css
-/* style.css */
-.header {
-  width: 100%;
-  height: 300px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: linear-gradient(to bottom, #000, #fff);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-end;
-}
-```
+![Simple example](docs/img/ex.gif)
 
 <hr>
 

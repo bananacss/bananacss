@@ -1,7 +1,7 @@
 {
   "name": "bananacss",
   "description": "The Brazilian CSS superset.",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "author": {
     "name": "afonsopacifer",
     "email": "afonsopacifer@live.com"
@@ -32,7 +32,7 @@
     "chokidar": "^1.6.0",
     "commander": "^2.9.0",
     "css": "^2.2.1",
-    "css-ast-iterations": "^0.4.0"
+    "css-ast-iterations": "^0.5.0"
   },
   "scripts": {
     "test": "mocha test/index.js",

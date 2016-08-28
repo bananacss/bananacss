@@ -1,9 +1,9 @@
 /**
  * Get custom properties values and add to corresponding var().
  * @module src/core/bnnVariable
- * @param {object} rule - :root rule
  * @param {object} ast - Main CSS AST
- * @param {number} index - :root seletor position in mains AST array
+ * @param {object} rule - :root rule
+ * @param {number} index - :root seletor position in main AST.
  */
 
 const bnnVariable = (ast, rule, index) => {
