@@ -1,31 +1,69 @@
-const bnnFunction = (rule, ast, index) => {
+/**
+ * Compile the @function and bnn-function into corresponding properties and arguments.
+ * @module src/core/bnnFunction
+ * @param {object} rule - @function rule
+ * @param {object} ast - Main CSS AST
+ * @param {number} index - @function seletor position in main AST.
+ */
 
-  ast.removeRule(index);
+const bnnFunction = (rule, ast, ruleIndex) => {
 
-  // Save the function properties
-  const functionProperties = [];
+  ast.removeRule(ruleIndex);
+
+  const functionDeclarations = [];
 
   rule.findDeclarations((declaration) => {
-    functionProperties.push([declaration.property, declaration.value]);
+    functionDeclarations.push([declaration.property, declaration.value]);
   });
 
-  // Get the function name
-  const functionName = rule.selectors.toString().replace(/\@function /g, '');
+  const functionName = rule.selectors
+                                    .toString()
+                                    .replace(/\@function /g, '')
+                                    .replace(/([\(].*)/g, '');
 
-  // Find call for functions and add properties
+  const functionArgs = rule.selectors
+                                  .toString()
+                                  .replace(/(.*[\(])/g, '')
+                                  .replace(/\)/g, '')
+                                  .replace(/\ /g, '')
+                                  .split(',');
+
   ast.findAllRulesByType('rule', (rule) => {
     rule.findDeclarationsByProperty('bnn-function', (declaration, index) => {
 
-      const functionValue = declaration.getParam(0);
+      const callFunctionName = declaration.value.replace(/([\(].*)/g, '');
 
-      if (functionValue === functionName) {
+      const callFunctionArgs = declaration.value
+                                              .replace(/(.*[\(])/g, '')
+                                              .replace(/\)/g, '')
+                                              .replace(/\ /g, '')
+                                              .split(',');
+
+      const associateArgs = [];
+
+      for (let i = 0 ; i < functionArgs.length ; i++) {
+        associateArgs.push([functionArgs[i],callFunctionArgs[i]]);
+      }
+
+      if (callFunctionName === functionName) {
 
         rule.removeDeclaration(index);
 
-        functionProperties.forEach((v, i) => {
+        functionDeclarations.forEach((d, i) => {
 
-          const property = functionProperties[i][0];
-          const value = functionProperties[i][1];
+          const property = functionDeclarations[i][0];
+          let value = functionDeclarations[i][1];
+
+          associateArgs.forEach((associateArg) => {
+
+            const functionArg = associateArg[0];
+            const callFunctionArg = associateArg[1];
+
+            if (value === functionArg) {
+              value = callFunctionArg;
+            }
+
+          });
 
           rule.addDeclaration(property, value, index);
 

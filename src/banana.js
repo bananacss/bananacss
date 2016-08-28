@@ -41,8 +41,6 @@ const Banana = (config) => {
         }
       });
 
-
-
       // Search for all banana properties and compile
       ast.findAllRulesByType('rule', (rule) => {
 
@@ -89,7 +87,6 @@ const Banana = (config) => {
         const isFunction = /\@function\ /.test(rule.selectors);
         if (isFunction) {
           if (config.bnnFunction) {
-            // console.log(rule.selectors);
             require('../src/core/bnnFunction.js')(rule, ast, index);
           }
         }
