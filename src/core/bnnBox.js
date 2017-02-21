@@ -10,14 +10,12 @@ const bnnBox = (rule) => {
     rule.removeDeclaration(index);
 
     let boxModel = declaration.getParam(0);
+    const boxModels = {
+      'inside': 'border-box',
+      'outside': 'content-box'
+    };
 
-    if (boxModel === 'inside') {
-      boxModel = 'border-box';
-    }
-
-    if (boxModel === 'outside') {
-      boxModel = 'content-box';
-    }
+    boxModel = boxModels[boxModel];
 
     rule.addDeclaration('box-sizing', boxModel, index);
 
