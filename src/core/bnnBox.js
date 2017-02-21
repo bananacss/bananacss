@@ -6,14 +6,14 @@
 
 const bnnBox = (rule) => {
   rule.findDeclarationsByProperty('bnn-box', (declaration, index) => {
-
-    rule.removeDeclaration(index);
-
-    let boxModel = declaration.getParam(0);
     const boxModels = {
       'inside': 'border-box',
       'outside': 'content-box'
     };
+
+    rule.removeDeclaration(index);
+
+    let boxModel = declaration.getParam(0);
 
     boxModel = boxModels[boxModel];
 
