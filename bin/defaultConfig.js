@@ -14,4 +14,4 @@ config.bnnBox = true;
 config.bnnFunction = true;
 config.compress = false;
 
-module.exports = config;
+export default config;

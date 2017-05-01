@@ -21,4 +21,4 @@ const watcherFsRender = (inputPath, outputPath) => {
 
 };
 
-module.exports = watcherFsRender;
+export default watcherFsRender;

@@ -31,7 +31,7 @@ program
 // Resolve default output path
 const basePath = path.dirname(inputPath);
 const baseName = path.basename(inputPath).replace(/\.bnn/g,'.css');
-const defaultOutputPath = basePath + '/' + baseName;
+const defaultOutputPath = `${basePath}/${baseName}`;
 
 // execute the program with corresponding option
 if (program.watch && program.out) {
