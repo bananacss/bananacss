@@ -59,4 +59,4 @@ const fsRender = (inputPath, outputPath, log = 'Your file has been' +
 
 };
 
-export default fsRender;
+module.exports = fsRender;
