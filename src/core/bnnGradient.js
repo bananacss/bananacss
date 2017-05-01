@@ -18,8 +18,7 @@ const bnnGradient = (rule) => {
       ? 'to left, '
       : 'to bottom, ';
 
-    const linearGradient = 'linear-gradient(' + Gradientdirection +
-      propertyColor1 + ', ' + propertyColor2 + ')';
+    const linearGradient = `linear-gradient(${Gradientdirection}${propertyColor1}, ${propertyColor2})`;
 
     rule.addDeclaration('background-image', linearGradient, index);
 
