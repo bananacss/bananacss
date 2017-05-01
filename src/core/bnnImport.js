@@ -22,7 +22,7 @@ const bnnImport = (importPath, ast, index, inputPath) => {
   const importPathClean = importPath
                                   .replace(/\"/g, '')
                                   .replace(/\'/g, '');
-  const resolvedPath = path.resolve(basePath + '/' + importPathClean);
+  const resolvedPath = path.resolve(`${basePath}/${importPathClean}`);
 
   // Get the new AST from module
   const bnnModule = fs.readFileSync(resolvedPath, 'utf8');
