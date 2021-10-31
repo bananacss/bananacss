@@ -43,8 +43,11 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.12",
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
     "eslint": "^3.2.2",
     "istanbul": "^0.4.4",
+    "husky": "^7.0.4",
     "jsdoc": "^3.4.0",
     "mocha": "^3.0.0",
     "mocha-lcov-reporter": "^1.2.0"
